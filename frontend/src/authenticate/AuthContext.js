@@ -17,7 +17,8 @@ export function AuthProvider({ children }) {
     fetchSessionData().then(response => {
       if (response) {
         setIsLoggedIn(true);
-        setUserData(response)
+        setUserData(response);
+        console.log(response);
       }
       else {
         console.log('User is not logged in');

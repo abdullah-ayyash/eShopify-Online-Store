@@ -7,15 +7,16 @@ import { useAuth } from './authenticate/AuthContext';
 import Navigation from './components/Navigation';
 import Login from './components/Login';
 import Register from './components/Register';
-import Loader from './components/Loader'
+import Loader from './components/Loader';
+import Profile from './components/Profile';
 
 
 
 function App() {
   // states
   const [registered, setRegistered] = useState(false);
-  const { isLoggedIn, setIsLoggedIn, userData, setUserData,isAuthLoaded } = useAuth();
-  
+  const { isLoggedIn, setIsLoggedIn, userData, setUserData, isAuthLoaded } = useAuth();
+
 
   // Register states
   const [registerUserName, setRegisterUserName] = useState('');
@@ -28,18 +29,16 @@ function App() {
   const [loginPassword, setLoginPassword] = useState('');
 
 
-
-
   const register = async (e) => {
     e.preventDefault();
-    
-    const response = await registerAccount(registerUserName,fullName, registerEmail, registerPassword);
+    const response = await registerAccount(registerUserName, fullName, registerEmail, registerPassword);
     console.log(response);
-    if (response.ok) {
+    if (response) {
       setRegistered(true);
       setRegisterUserName('');
       setRegisterEmail('');
       setRegisterPassword('');
+      setfullName('');
     }
   }
 
@@ -53,8 +52,8 @@ function App() {
       setLoginPassword(null);
     }
   }
-// This take care of which coponents to show ( can do some cleaning to reduce checking )
-  if(!isAuthLoaded){
+  // This take care of which coponents to show ( can do some cleaning to reduce checking )
+  if (!isAuthLoaded) {
     return <Loader />
   }
 
@@ -107,13 +106,15 @@ function App() {
           }
         />
 
+        <Route path="/profile" element={ isLoggedIn ?
+          <Profile isLoggedIn={isLoggedIn} userData={userData} /> : <Navigate to="/" />
+        } >
+
+        </Route>
 
 
       </Routes>
     </Router>
-
-
-
 
   );
 }

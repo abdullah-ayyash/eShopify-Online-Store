@@ -1,8 +1,17 @@
+/* My custom css  */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+html{
+  font-size: 16px;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+  font-family: 'Open Sans', 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -12,35 +21,44 @@ code {
     monospace;
 }
 
-/* My custom css  */
-html{
-  font-size: 16px;
-}
+
 
 body{
   margin: 0;
   padding: 0;
+  background-color: #dde5e8;
 }
 
 header{
   background-color: #f4f4f4;
+
 }
 
 #register-message{
   color: limegreen;
+  text-align: center;
 }
 
 header ul{
   display: flex;
   list-style: none;
-  font-size: 1.4rem;
+  justify-content: space-around;
+  margin: 0;
+}
+#logo{
+  display: flex;
+}
+#menu-list{
+  display: flex;
+  list-style: none;
+  font-size: 1.2rem;
   margin: 0;
   padding: 0;
   column-gap: 1.5rem;
   align-items: center;
 }
 
-header ul li{
+#menu-list li{
   padding-left: 3%;
 }
 
@@ -94,4 +112,44 @@ header ul li{
   align-items: center;
   flex-direction: column;
   padding-top: 1rem;
+}
+
+#user-control{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1rem;
+}
+#user-control li img{
+  width: 100%;
+  height: 35px;
+}
+#user-control li a button{
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  color: black;
+  background-color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'Open Sans';
+}
+
+#profile-section{
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 3rem;
+}
+#profile-photo img{
+  height: 200px;
+}
+#profile-info h2{
+  font-size: 2rem;
+}
+
+#profile-info p{
+  font-size: 1.5rem;
 }

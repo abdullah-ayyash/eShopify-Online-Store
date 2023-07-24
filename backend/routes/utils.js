@@ -18,7 +18,7 @@ const registerRoute = async (req, res) => {
         const salt = await bcrypt.genSalt(3);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        const newUserObj = { username, email, password: hashedPassword, };
+        const newUserObj = { username,fullName, email, password: hashedPassword, };
         const newUserReq = await addNewUser(newUserObj);
 
         res.status(201).json(newUserReq);
