@@ -1,6 +1,17 @@
-
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Login({setLoginUserName, setLoginPassword, login, isLoggedIn,loginUserName, loginPassword}) {
+
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigate("/profile");
+        }
+    }, []);
+
+
     if(!isLoggedIn){
         return (
             <div>
@@ -23,9 +34,7 @@ function Login({setLoginUserName, setLoginPassword, login, isLoggedIn,loginUserN
             </div>
         );
     }
-    return (
-        isLoggedIn && <h2>This is a persistant login session</h2>
-    )
+
 
 }
 

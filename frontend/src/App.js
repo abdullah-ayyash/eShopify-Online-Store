@@ -1,45 +1,34 @@
-// import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from 'react';
-import { fetchSessionData, registerAccount, accountLogin } from './utils/index'
+import { useState, useEffect } from 'react';
+import { registerAccount, accountLogin } from './utils/index'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Routes } from 'react-router-dom';
+import { Routes, Navigate } from 'react-router-dom';
+import { useAuth } from './authenticate/AuthContext';
 import Navigation from './components/Navigation';
+import UserNavigation from './components/UserNavigation';
 import Login from './components/Login';
 import Register from './components/Register';
+import Loader from './components/Loader'
+
 
 
 function App() {
-  // user login or register state
+  // states
   const [registered, setRegistered] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
-  const [userData, setUserData] = useState(null);
+  const { isLoggedIn, setIsLoggedIn, userData, setUserData,isAuthLoaded, setIsAuthLoaded } = useAuth();
+  
 
-  // Register stats
+  // Register states
   const [registerUserName, setRegisterUserName] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
 
-  // Login stats
+  // Login states
   const [loginUserName, setLoginUserName] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
 
 
-  useEffect(() => {
 
-    fetchSessionData().then(response => {
-      if (response) {
-        setIsLoggedIn(true);
-        setUserData(response)
-      }
-      else {
-        console.log('User is not logged in');
-        setIsLoggedIn(false);
-      }
-    })
-      .catch(console.error);
-
-  }, [])
 
   const register = async (e) => {
     e.preventDefault();
@@ -64,31 +53,56 @@ function App() {
     }
   }
 
+  if(!isAuthLoaded){
+    return <Loader />
+  }
+
   return (
     <Router>
-      <Navigation setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
+
+      {isLoggedIn ? <UserNavigation setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} /> : <Navigation />}
+
       <Routes>
-        <Route path='/login' element={<Login 
-        setLoginUserName={setLoginUserName} 
-        setLoginPassword={setLoginPassword} 
-        login={login} 
-        isLoggedIn={isLoggedIn}
-        loginUserName={loginUserName}
-        loginPassword={loginPassword}
-        />} >
-        </Route>
-        <Route path='/register' element={<Register 
-        setRegisterUserName={setRegisterUserName} 
-        setRegisterEmail={setRegisterEmail} 
-        setRegisterPassword={setRegisterPassword}
-        registerUserName={registerUserName}
-        registerEmail={registerEmail}
-        registerPassword={registerPassword}
-        registered={registered}
-        register={register}
-        isLoggedIn={isLoggedIn}
-        />} >
-        </Route>
+
+        <Route
+          path="/login"
+          element={
+            isLoggedIn ? (
+              <Navigate to="/" />
+            ) : (
+              <Login
+                setLoginUserName={setLoginUserName}
+                setLoginPassword={setLoginPassword}
+                login={login}
+                isLoggedIn={isLoggedIn}
+                loginUserName={loginUserName}
+                loginPassword={loginPassword}
+              />
+            )
+          }
+        />
+
+        <Route
+          path="/register"
+          element={
+            isLoggedIn ? (
+              // Redirect to the main page if the user is already logged in
+              <Navigate to="/" />
+            ) : (
+              <Register
+                setRegisterUserName={setRegisterUserName}
+                setRegisterEmail={setRegisterEmail}
+                setRegisterPassword={setRegisterPassword}
+                registerUserName={registerUserName}
+                registerEmail={registerEmail}
+                registerPassword={registerPassword}
+                registered={registered}
+                register={register}
+                isLoggedIn={isLoggedIn}
+              />
+            )
+          }
+        />
 
 
 
