@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-function Register({ setRegisterUserName, setRegisterEmail, setRegisterPassword,
-    registerUserName, registerEmail, registerPassword, registered, register, isLoggedIn }) {
+function Register({ setRegisterUserName, setfullName, setRegisterEmail, setRegisterPassword,
+    registerUserName, fullName, registerEmail, registerPassword, registered, register, isLoggedIn }) {
     const navigate = useNavigate();
-    
+
     useEffect(() => {
         console.log(isLoggedIn);
         if (isLoggedIn) {
@@ -15,11 +15,17 @@ function Register({ setRegisterUserName, setRegisterEmail, setRegisterPassword,
     return (
         <div>
             {registered && <h2 id='register-message'>Registeration is successful.</h2>}
-            <form>
+            <form id="register-form">
                 <label htmlFor="username">Username: </label>
                 <input type='text' name='username' id='username'
                     onChange={(e) => setRegisterUserName(e.target.value)}
                     value={registerUserName}
+                /><br />
+
+                <label htmlFor="fullname">Full name: </label>
+                <input type='text' name='fullname' id='fullname'
+                    onChange={(e) => setfullName(e.target.value)}
+                    value={fullName}
                 /><br />
 
                 <label htmlFor="email">Email: </label>

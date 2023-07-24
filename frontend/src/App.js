@@ -1,11 +1,10 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { registerAccount, accountLogin } from './utils/index'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Routes, Navigate } from 'react-router-dom';
 import { useAuth } from './authenticate/AuthContext';
 import Navigation from './components/Navigation';
-import UserNavigation from './components/UserNavigation';
 import Login from './components/Login';
 import Register from './components/Register';
 import Loader from './components/Loader'
@@ -15,11 +14,12 @@ import Loader from './components/Loader'
 function App() {
   // states
   const [registered, setRegistered] = useState(false);
-  const { isLoggedIn, setIsLoggedIn, userData, setUserData,isAuthLoaded, setIsAuthLoaded } = useAuth();
+  const { isLoggedIn, setIsLoggedIn, userData, setUserData,isAuthLoaded } = useAuth();
   
 
   // Register states
   const [registerUserName, setRegisterUserName] = useState('');
+  const [fullName, setfullName] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
 
@@ -32,7 +32,8 @@ function App() {
 
   const register = async (e) => {
     e.preventDefault();
-    const response = await registerAccount(registerUserName, registerEmail, registerPassword);
+    
+    const response = await registerAccount(registerUserName,fullName, registerEmail, registerPassword);
     console.log(response);
     if (response.ok) {
       setRegistered(true);
@@ -52,7 +53,7 @@ function App() {
       setLoginPassword(null);
     }
   }
-
+// This take care of which coponents to show ( can do some cleaning to reduce checking )
   if(!isAuthLoaded){
     return <Loader />
   }
@@ -60,7 +61,7 @@ function App() {
   return (
     <Router>
 
-      {isLoggedIn ? <UserNavigation setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} /> : <Navigation />}
+      {<Navigation setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />}
 
       <Routes>
 
@@ -91,9 +92,11 @@ function App() {
             ) : (
               <Register
                 setRegisterUserName={setRegisterUserName}
+                setfullName={setfullName}
                 setRegisterEmail={setRegisterEmail}
                 setRegisterPassword={setRegisterPassword}
                 registerUserName={registerUserName}
+                fullName={fullName}
                 registerEmail={registerEmail}
                 registerPassword={registerPassword}
                 registered={registered}

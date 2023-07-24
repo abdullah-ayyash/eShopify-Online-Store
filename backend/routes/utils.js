@@ -6,7 +6,7 @@ const loginRoute = (req, res) => {
 }
 
 const registerRoute = async (req, res) => {
-    const { username, email, password } = req.body;
+    const { username,fullName, email, password } = req.body;
     try {
         const user = await userExists(email);
         if (user) {

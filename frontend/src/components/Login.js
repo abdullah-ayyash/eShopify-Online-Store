@@ -15,7 +15,7 @@ function Login({setLoginUserName, setLoginPassword, login, isLoggedIn,loginUserN
     if(!isLoggedIn){
         return (
             <div>
-                <form>
+                <form id="login-form">
                     <label htmlFor="login-username">Username: </label>
                     <input type='text' name='username' id='login-username'
                         onChange={(e) => setLoginUserName(e.target.value)}

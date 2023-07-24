@@ -7,10 +7,13 @@ export const fetchSessionData = async () => {
     return userData;
   }
 
-export const registerAccount  = async (registerUserName,registerEmail,registerPassword) =>{
+ 
+
+export const registerAccount  = async (registerUserName,fullName,registerEmail,registerPassword) =>{
     const url = 'http://localhost:8000/auth/register';
     const data = {
       username: registerUserName,
+      fullName: fullName,
       email: registerEmail,
       password: registerPassword
     }

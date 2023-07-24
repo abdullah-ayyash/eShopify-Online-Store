@@ -57,9 +57,9 @@ const findUserById = async (userId) => {
 }
 
 const addNewUser = async (userObj) => {
-    const { username, email, password } = userObj;
-    const query = 'INSERT INTO users (username,email,password) VALUES($1,$2,$3) RETURNING*';
-    const values = [username, email, password];
+    const { username,fullName, email, password } = userObj;
+    const query = 'INSERT INTO users (username,fullName,email,password) VALUES($1,$2,$3,$4) RETURNING*';
+    const values = [username,fullName, email, password];
     try{
         const results = await pool.query(query,values);
         return results.rows[0];

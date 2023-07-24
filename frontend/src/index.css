@@ -40,6 +40,10 @@ header ul{
   align-items: center;
 }
 
+header ul li{
+  padding-left: 3%;
+}
+
 /* loading  */
 #loading-container {
   display: flex;
@@ -61,4 +65,33 @@ header ul{
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Navlink */
+.nav-link{
+  text-decoration: none;
+  color: black;
+}
+.nav-link-active{
+  text-decoration: none;
+  color: black;
+  border-bottom: 2px solid limegreen;
+}
+
+#register-form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+
+#login-form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 1rem;
 }
