@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const passport = require("passport");
-const { loginRoute, registerRoute, isLoggedIn } = require('./utils')
+const { loginRoute, registerRoute, isLoggedIn,getProducts } = require('./utils')
 
 router.post('/login', passport.authenticate('local'), loginRoute);
-
-
 
 router.post("/register", registerRoute);
 
@@ -21,5 +19,7 @@ router.post('/logout', function(req, res, next) {
     res.status(200).send();
   });
 });
+
+router.get('/products', getProducts);
 
 module.exports = router;

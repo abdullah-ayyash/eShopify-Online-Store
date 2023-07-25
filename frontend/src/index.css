@@ -1,9 +1,11 @@
 /* My custom css  */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
-*{
+
+* {
   box-sizing: border-box;
 }
-html{
+
+html {
   font-size: 16px;
 }
 
@@ -13,8 +15,8 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
   font-family: 'Open Sans', 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,32 +28,38 @@ code {
 
 
 
-body{
+body {
   margin: 0;
   padding: 0;
-  background-color: #dde5e8;
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image:  radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0,10px 10px;
 }
 
-header{
-  background-color: #f4f4f4;
+header {
+  background-color: #ffffff;
 
 }
 
-#register-message{
+#register-message {
   color: limegreen;
   text-align: center;
 }
 
-header ul{
+header ul {
   display: flex;
   list-style: none;
   justify-content: space-around;
   margin: 0;
 }
-#logo{
+
+#logo {
   display: flex;
 }
-#menu-list{
+
+#menu-list {
   display: flex;
   list-style: none;
   font-size: 1.2rem;
@@ -61,7 +69,7 @@ header ul{
   align-items: center;
 }
 
-#menu-list li{
+#menu-list li {
   padding-left: 3%;
 }
 
@@ -84,22 +92,28 @@ header ul{
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Navlink */
-.nav-link{
+.nav-link {
   text-decoration: none;
   color: black;
-}
-.nav-link-active{
-  text-decoration: none;
-  color: black;
-  border-bottom: 2px solid limegreen;
 }
 
-#register-form{
+.nav-link-active {
+  text-decoration: none;
+  color: #2f7dfc;
+  border-bottom: 2px solid #2f7dfc;
+}
+
+#register-form {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -110,7 +124,33 @@ header ul{
   padding-bottom: 1rem;
 }
 
-#login-form{
+#register-form-heading {
+  text-align: center;
+  margin: 0;
+  padding: 1rem 0;
+  font-size: 1.6rem;
+  color: black;
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+  background-size: 10px 10px;
+  text-decoration: overline;
+}
+
+#login-form-heading{
+  text-align: center;
+  margin: 0;
+  padding: 1rem 0;
+  font-size: 1.6rem;
+  color: black;
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+  background-size: 10px 10px;
+  text-decoration: overline;
+}
+
+#login-form {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -121,17 +161,41 @@ header ul{
   padding-bottom: 1rem;
 }
 
-#user-control{
+#login-form>input[type="submit"] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#register-form>input[type='submit'] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#user-control {
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 1rem;
 }
-#user-control li img{
+
+#user-control li img {
   width: 100%;
   height: 35px;
 }
-#user-control li a button{
+
+#user-control li a button {
   padding: 5px 10px;
   font-size: 0.9rem;
   color: black;
@@ -141,7 +205,7 @@ header ul{
   font-family: 'Open Sans';
 }
 
-#profile-info-section{
+#profile-info-section {
   display: flex;
   align-items: center;
   padding-top: 5px;
@@ -149,76 +213,138 @@ header ul{
   justify-content: center;
   column-gap: 3rem;
 }
-#profile-photo img{
+
+#profile-photo img {
   height: 200px;
 }
-#profile-info h2{
+
+#profile-info h2 {
   font-size: 2rem;
 }
 
-#profile-info p{
+#profile-info p {
   font-size: 1.5rem;
 }
 
 
-#user-container{
+#user-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
   column-gap: 3rem;
   padding: 0 2rem;
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image:  radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0,10px 10px;
 }
-#tabs-container{
+
+#tabs-container {
   width: 15%;
 }
-#profile-content{
+
+#profile-content {
   width: 85%;
 }
-.vl{
+
+.vl {
   border-left: 1px dotted #818895;
   height: 500px;
 }
-#category-container{
+
+#category-container {
   width: 90%;
   margin: 0 auto;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 2rem 0;
 }
-#category-list{
+
+#category-list {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   column-gap: 16px;
 }
 
-.category-item{
+.category-item {
   text-align: center;
 }
 
-.category-item img{
+.category-item img {
   max-height: 200px;
   border-radius: 5px;
 }
-#category-heading{
+
+#category-heading {
   font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: #1B1212	;
-}
-.category-item h3{
+  color: black;
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+  background-size: 10px 10px;
+  margin: 0;
+  padding: 20px 0;
   text-decoration: overline;
+
+}
+
+.category-item h3 {
   font-weight: 600;
 }
-#seeall-btn{
+
+#seeall-btn {
   text-align: center;
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0;
 }
-#seeall-btn a{
+
+#seeall-btn a {
   text-decoration: none;
-  color: #1B1212;
+  color: #343434	;
   border: 2px solid cadetblue;
   padding: 5px 20px;
 }
+
+#product-card{
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  text-align: center;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 30%;
+}
+
+#product-card > img{
+  width: 100%;
+  height: auto;
+}
+
+#product-card > h4{
+  color: darkgreen;
+}
+
+#product-card-btn{
+  background-color: #45a146;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  border: none;
+}
+
+#product-cards{
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%;
+  margin: 0 auto;
+  column-gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+

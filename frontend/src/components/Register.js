@@ -14,6 +14,7 @@ function Register({ setRegisterUserName, setfullName, setRegisterEmail, setRegis
     }, []);
     return (
         <div>
+            <h2 id="register-form-heading">Sign Up for a new account</h2>
             {registered && <h2 id='register-message'>Registeration is successful.</h2>}
             <form id="register-form">
                 <label htmlFor="username">Username: </label>

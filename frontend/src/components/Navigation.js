@@ -33,6 +33,11 @@ function Navigation({ setIsLoggedIn, isLoggedIn }) {
                 Home
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/products" className={({ isActive }) => isActive ? "nav-link-active" : "nav-link"}>
+                Products
+              </NavLink>
+            </li>
 
             {!isLoggedIn &&
               <li>

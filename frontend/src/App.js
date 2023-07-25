@@ -10,6 +10,7 @@ import Register from './components/Register';
 import Loader from './components/Loader';
 import User from './components/User';
 import HomePage from './homepage/HomePage.js'
+import Products from './productComponents/Products';
 
 
 
@@ -110,6 +111,8 @@ function App() {
         <Route path="/user" element={isLoggedIn ? 
           <User isLoggedIn={isLoggedIn} userData={userData} /> : <Navigate to="/" />} >
         </Route>
+
+        <Route path='/products' element={ <Products /> }></Route>
 
         <Route path='/' element={<HomePage />} >
         </Route>

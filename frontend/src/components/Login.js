@@ -15,6 +15,7 @@ function Login({setLoginUserName, setLoginPassword, login, isLoggedIn,loginUserN
     if(!isLoggedIn){
         return (
             <div>
+                <h2 id="login-form-heading">Sign in to your account</h2>
                 <form id="login-form">
                     <label htmlFor="login-username">Username: </label>
                     <input type='text' name='username' id='login-username'

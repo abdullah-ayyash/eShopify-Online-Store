@@ -69,10 +69,22 @@ const addNewUser = async (userObj) => {
     }
 }
 
+const queryProducts = async () =>{
+    const query = 'SELECT * FROM products';
+    try{
+        const results = await pool.query(query);
+        return results.rows;
+    } catch (err){
+        console.log('Error while querying the products:', err);
+        throw err;
+    }
+}
+
 module.exports = {
     findByUsername,
     userExists,
     addNewUser,
     findUserByUsername,
-    findUserById
+    findUserById,
+    queryProducts
 }

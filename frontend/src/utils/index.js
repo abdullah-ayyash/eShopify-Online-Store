@@ -41,3 +41,11 @@ export const accountLogin = async (loginUserName,loginPassword) =>{
     const json = await response.json();
     return json;
 }
+
+export const fetchProducts = async () =>{
+  const url = 'http://localhost:8000/auth/products';
+  const response = await fetch(url);
+  const json = await response.json();
+  console.log(json);
+  return json;
+}

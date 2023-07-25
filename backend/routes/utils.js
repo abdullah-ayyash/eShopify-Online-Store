@@ -1,4 +1,4 @@
-const { userExists, addNewUser } = require('../database/database')
+const { userExists, addNewUser,queryProducts } = require('../database/database')
 const bcrypt = require("bcrypt");
 
 const loginRoute = (req, res) => {
@@ -38,10 +38,19 @@ const isLoggedIn = (req, res) => {
     }
   }
 
+const getProducts = async (req,res) =>{
+    try{
+        const response = await queryProducts();
+        res.status(200).json(response);
+    } catch(err){
+        console.log("Failed to get products", err);
+    }
+}
 
 
 module.exports = {
     loginRoute,
     registerRoute,
-    isLoggedIn
+    isLoggedIn,
+    getProducts
 }
