@@ -8,7 +8,8 @@ import Navigation from './components/Navigation';
 import Login from './components/Login';
 import Register from './components/Register';
 import Loader from './components/Loader';
-import Profile from './components/Profile';
+import User from './components/User';
+import HomePage from './homepage/HomePage.js'
 
 
 
@@ -106,13 +107,13 @@ function App() {
           }
         />
 
-        <Route path="/profile" element={ isLoggedIn ?
-          <Profile isLoggedIn={isLoggedIn} userData={userData} /> : <Navigate to="/" />
-        } >
-
+        <Route path="/user" element={isLoggedIn ? 
+          <User isLoggedIn={isLoggedIn} userData={userData} /> : <Navigate to="/" />} >
         </Route>
 
-
+        <Route path='/' element={<HomePage />} >
+        </Route>
+        {/* <Route path="*" element={<NoMatch />} /> */}
       </Routes>
     </Router>
 

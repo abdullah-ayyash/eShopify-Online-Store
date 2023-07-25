@@ -56,7 +56,7 @@ function Navigation({ setIsLoggedIn, isLoggedIn }) {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/profile">
+                  <NavLink to="/user">
                     <img src={profileIcon} alt='user-profile' />
                   </NavLink>
                 </li>

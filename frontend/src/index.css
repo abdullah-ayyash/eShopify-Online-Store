@@ -1,5 +1,8 @@
 /* My custom css  */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+*{
+  box-sizing: border-box;
+}
 html{
   font-size: 16px;
 }
@@ -103,6 +106,8 @@ header ul{
   align-items: center;
   flex-direction: column;
   padding-top: 1rem;
+  background-color: white;
+  padding-bottom: 1rem;
 }
 
 #login-form{
@@ -112,6 +117,8 @@ header ul{
   align-items: center;
   flex-direction: column;
   padding-top: 1rem;
+  background: white;
+  padding-bottom: 1rem;
 }
 
 #user-control{
@@ -134,8 +141,7 @@ header ul{
   font-family: 'Open Sans';
 }
 
-#profile-section{
-  background-color: white;
+#profile-info-section{
   display: flex;
   align-items: center;
   padding-top: 5px;
@@ -152,4 +158,67 @@ header ul{
 
 #profile-info p{
   font-size: 1.5rem;
+}
+
+
+#user-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  column-gap: 3rem;
+  padding: 0 2rem;
+}
+#tabs-container{
+  width: 15%;
+}
+#profile-content{
+  width: 85%;
+}
+.vl{
+  border-left: 1px dotted #818895;
+  height: 500px;
+}
+#category-container{
+  width: 90%;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 2rem 0;
+}
+#category-list{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 16px;
+}
+
+.category-item{
+  text-align: center;
+}
+
+.category-item img{
+  max-height: 200px;
+  border-radius: 5px;
+}
+#category-heading{
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #1B1212	;
+}
+.category-item h3{
+  text-decoration: overline;
+  font-weight: 600;
+}
+#seeall-btn{
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+#seeall-btn a{
+  text-decoration: none;
+  color: #1B1212;
+  border: 2px solid cadetblue;
+  padding: 5px 20px;
 }
