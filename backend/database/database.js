@@ -80,11 +80,47 @@ const queryProducts = async () =>{
     }
 }
 
+const cartExists = async (user_id,product_id ) => {
+    const query = 'SELECT * FROM cart_items WHERE user_id = $1 AND product_id=$2';
+    const values = [user_id,product_id];
+    try{
+        const results = await pool.query(query,values);
+        return results.rows;
+    } catch (err){
+        console.log('Error while querying the database:', err);
+        throw err;
+    }
+}
+
+const pushToCart = async (product_id,quantity,user_id)=>{
+    const query1 = "INSERT INTO cart_items (product_id, quantity, user_id) VALUES ($1, $2, $3)"
+    const values1 = [product_id,quantity, user_id];
+
+    const query2 = "INSERT INTO users_cart_items (user_id, product_id) VALUES ($1, $2)"
+    const values2 = [user_id,product_id];
+
+    try{
+        const results1 = await pool.query(query1,values1);
+        const results2 = await pool.query(query2,values2);
+        return results1.rows;
+
+        
+    } catch (err){
+        console.log('Error while inserting cart items to database:', err);
+        throw err;
+    }
+
+}
+
+
+
 module.exports = {
     findByUsername,
     userExists,
     addNewUser,
     findUserByUsername,
     findUserById,
-    queryProducts
+    queryProducts,
+    pushToCart,
+    cartExists
 }

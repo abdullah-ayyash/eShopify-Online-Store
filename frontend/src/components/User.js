@@ -24,7 +24,7 @@ function User({ isLoggedIn, userData }) {
         </Tabs>
       </div>
 
-      <div class="vl"></div>
+      <div className="vl"></div>
 
       <div id="profile-content">
 

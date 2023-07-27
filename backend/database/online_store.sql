@@ -68,3 +68,22 @@ INSERT INTO products_categories (product_id, category_id) VALUES
   (4, 1),
   (5, 1);
 
+INSERT INTO products (name, price, description, category_id)
+VALUES
+  ('Premium Leather Watch Band', 39.99, 'Handcrafted genuine leather watch band with stitching detail.', 2),
+  ('Stainless Steel Bracelet Watch Band', 49.99, 'Elegant stainless steel bracelet watch band with butterfly clasp.', 2),
+  ('Sport Silicone Watch Band', 29.99, 'Durable and comfortable silicone watch band designed for sports activities.', 2),
+  ('Nylon NATO Watch Strap', 19.99, 'Classic NATO-style nylon watch strap in various colors.', 2),
+  ('Milanese Loop Metal Watch Band', 59.99, 'Stylish and adjustable metal mesh watch band with magnetic closure.', 2);
+
+INSERT INTO products_categories (product_id, category_id)
+VALUES
+  (LASTVAL() - 4, 2),
+  (LASTVAL() - 3, 2),
+  (LASTVAL() - 2, 2),
+  (LASTVAL() - 1, 2),
+  (LASTVAL(), 2);
+  
+
+
+

@@ -11,6 +11,7 @@ import Loader from './components/Loader';
 import User from './components/User';
 import HomePage from './homepage/HomePage.js'
 import Products from './productComponents/Products';
+import AnnouncementBar from './components/AnnouncementBar';
 
 
 
@@ -34,7 +35,6 @@ function App() {
   const register = async (e) => {
     e.preventDefault();
     const response = await registerAccount(registerUserName, fullName, registerEmail, registerPassword);
-    console.log(response);
     if (response) {
       setRegistered(true);
       setRegisterUserName('');
@@ -61,9 +61,10 @@ function App() {
 
   return (
     <Router>
-
-      {<Navigation setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />}
-
+      
+      <AnnouncementBar />
+      <Navigation setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
+      
       <Routes>
 
         <Route
@@ -116,6 +117,8 @@ function App() {
 
         <Route path='/' element={<HomePage />} >
         </Route>
+
+        
         {/* <Route path="*" element={<NoMatch />} /> */}
       </Routes>
     </Router>

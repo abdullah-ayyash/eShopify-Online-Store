@@ -21,7 +21,6 @@ export function AuthProvider({ children }) {
       if (response) {
         setIsLoggedIn(true);
         setUserData(response);
-        console.log(response);
       }
       else {
         console.log('User is not logged in');
@@ -32,7 +31,6 @@ export function AuthProvider({ children }) {
     // getting products
     fetchProducts().then(response =>{
       if(response){
-        console.log(response);
         setproductsData(response);
         setProductsLoaded(true);
       }

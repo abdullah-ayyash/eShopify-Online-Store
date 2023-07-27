@@ -13,6 +13,7 @@ function Navigation({ setIsLoggedIn, isLoggedIn }) {
     });
     console.log(response);
     setIsLoggedIn(false);
+    window.location.reload();
   }
 
   return (

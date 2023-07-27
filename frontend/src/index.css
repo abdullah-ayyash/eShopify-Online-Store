@@ -110,7 +110,7 @@ header ul {
 .nav-link-active {
   text-decoration: none;
   color: #2f7dfc;
-  border-bottom: 2px solid #2f7dfc;
+  border-bottom: 3px solid #2f7dfc;
 }
 
 #register-form {
@@ -212,6 +212,8 @@ header ul {
   flex-wrap: wrap;
   justify-content: center;
   column-gap: 3rem;
+  background: azure;
+  box-shadow: rgb(125 186 255 / 30%) 0px 0px 0px 3px;
 }
 
 #profile-photo img {
@@ -275,13 +277,14 @@ header ul {
 .category-item img {
   max-height: 200px;
   border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 #category-heading {
   font-size: 1.8rem;
   color: black;
   background-color: #e5e5f7;
-  opacity: 0.8;
+  /* opacity: 0.8; */
   background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
   background-size: 10px 10px;
   margin: 0;
@@ -304,8 +307,15 @@ header ul {
 #seeall-btn a {
   text-decoration: none;
   color: #343434	;
-  border: 2px solid cadetblue;
+  border: 2px solid #2f7dfc;
   padding: 5px 20px;
+  transition: all 500ms ease 0s;
+}
+#seeall-btn a:hover{
+  background-color: #2f7dfc;
+  color: white;
+  padding: 5px 30px;
+  border-radius: 5px;
 }
 
 #product-card{
@@ -348,3 +358,29 @@ header ul {
   justify-content: center;
 }
 
+#announcement-bar{
+  margin: 0;
+  padding: 0.5rem 0;
+  text-align: center;
+  color: white;
+
+  background-color: #007832;
+  opacity: 0.8;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #007832 4px ), repeating-linear-gradient( #002d0855, #002d08 );
+
+}
+
+#product-card-checkout-btn{
+  background-color: #2f7dfc;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  border: none;
+}
+
+#top-picks-heading{
+  font-size: 1.8rem;
+  margin-bottom: 0;
+}

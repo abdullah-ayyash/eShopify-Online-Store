@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require("passport");
-const { loginRoute, registerRoute, isLoggedIn,getProducts } = require('./utils')
+const { loginRoute, registerRoute, isLoggedIn,getProducts,addToCart,checkCart } = require('./utils')
 
 router.post('/login', passport.authenticate('local'), loginRoute);
 
@@ -21,5 +21,9 @@ router.post('/logout', function(req, res, next) {
 });
 
 router.get('/products', getProducts);
+
+router.post('/add-to-cart',addToCart);
+
+router.get('/cart-check',checkCart);
 
 module.exports = router;
