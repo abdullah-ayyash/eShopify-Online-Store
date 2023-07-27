@@ -1,5 +1,5 @@
 import ShopByCategory from "./ShopByCategory";
-import Products from "../productComponents/Products";
+import Products from "../products/Products";
 
 function HomePage() {
 

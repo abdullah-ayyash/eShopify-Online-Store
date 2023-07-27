@@ -10,8 +10,9 @@ import Register from './components/Register';
 import Loader from './components/Loader';
 import User from './components/User';
 import HomePage from './homepage/HomePage.js'
-import Products from './productComponents/Products';
+import Products from './products/Products';
 import AnnouncementBar from './components/AnnouncementBar';
+import Cart from './products/Cart';
 
 
 
@@ -114,6 +115,8 @@ function App() {
         </Route>
 
         <Route path='/products' element={ <Products /> }></Route>
+
+        <Route path='/cart' element={ <Cart isLoggedIn={isLoggedIn} userData={userData} /> }></Route>
 
         <Route path='/' element={<HomePage />} >
         </Route>

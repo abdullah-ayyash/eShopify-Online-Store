@@ -33,9 +33,9 @@ body {
   padding: 0;
   background-color: #e5e5f7;
   opacity: 0.8;
-  background-image:  radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+  background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
   background-size: 20px 20px;
-  background-position: 0 0,10px 10px;
+  background-position: 0 0, 10px 10px;
 }
 
 header {
@@ -137,7 +137,7 @@ header ul {
   text-decoration: overline;
 }
 
-#login-form-heading{
+#login-form-heading {
   text-align: center;
   margin: 0;
   padding: 1rem 0;
@@ -161,6 +161,14 @@ header ul {
   padding-bottom: 1rem;
 }
 
+#login-form>label {
+  font-size: 1.2rem;
+}
+
+#login-form>input {
+  font-size: 1.2rem;
+}
+
 #login-form>input[type="submit"] {
   background-color: #4CAF50;
   border: none;
@@ -169,7 +177,15 @@ header ul {
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
+}
+
+#register-form>label {
+  font-size: 1.2rem;
+}
+
+#register-form>input {
+  font-size: 1.2rem;
 }
 
 #register-form>input[type='submit'] {
@@ -180,7 +196,7 @@ header ul {
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 #user-control {
@@ -212,8 +228,8 @@ header ul {
   flex-wrap: wrap;
   justify-content: center;
   column-gap: 3rem;
-  background: azure;
-  box-shadow: rgb(125 186 255 / 30%) 0px 0px 0px 3px;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px
 }
 
 #profile-photo img {
@@ -232,18 +248,22 @@ header ul {
 #user-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   column-gap: 3rem;
   padding: 0 2rem;
   background-color: #e5e5f7;
   opacity: 0.8;
-  background-image:  radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+  background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
   background-size: 20px 20px;
-  background-position: 0 0,10px 10px;
+  background-position: 0 0, 10px 10px;
 }
 
 #tabs-container {
   width: 15%;
+  background-color: white;
+  padding: 3rem 0;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
 }
 
 #profile-content {
@@ -306,19 +326,20 @@ header ul {
 
 #seeall-btn a {
   text-decoration: none;
-  color: #343434	;
+  color: #343434;
   border: 2px solid #2f7dfc;
   padding: 5px 20px;
   transition: all 500ms ease 0s;
 }
-#seeall-btn a:hover{
+
+#seeall-btn a:hover {
   background-color: #2f7dfc;
   color: white;
   padding: 5px 30px;
   border-radius: 5px;
 }
 
-#product-card{
+#product-card {
   display: flex;
   background-color: white;
   flex-direction: column;
@@ -327,18 +348,19 @@ header ul {
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 30%;
+  justify-content: space-between;
 }
 
-#product-card > img{
+#product-card>img {
   width: 100%;
   height: auto;
 }
 
-#product-card > h4{
+#product-card>h4 {
   color: darkgreen;
 }
 
-#product-card-btn{
+#product-card-btn {
   background-color: #45a146;
   padding: 10px 15px;
   font-size: 0.9rem;
@@ -348,7 +370,7 @@ header ul {
   border: none;
 }
 
-#product-cards{
+#product-cards {
   display: flex;
   flex-wrap: wrap;
   width: 85%;
@@ -358,7 +380,7 @@ header ul {
   justify-content: center;
 }
 
-#announcement-bar{
+#announcement-bar {
   margin: 0;
   padding: 0.5rem 0;
   text-align: center;
@@ -366,11 +388,11 @@ header ul {
 
   background-color: #007832;
   opacity: 0.8;
-  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #007832 4px ), repeating-linear-gradient( #002d0855, #002d08 );
+  background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #007832 4px), repeating-linear-gradient(#002d0855, #002d08);
 
 }
 
-#product-card-checkout-btn{
+#product-card-checkout-btn {
   background-color: #2f7dfc;
   padding: 10px 15px;
   font-size: 0.9rem;
@@ -380,7 +402,99 @@ header ul {
   border: none;
 }
 
-#top-picks-heading{
+#top-picks-heading {
   font-size: 1.8rem;
   margin-bottom: 0;
 }
+
+
+/* Cart style */
+
+.cart-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.item-image {
+  flex: 0 0 100px;
+  margin-right: 10px;
+}
+
+.item-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-name {
+  font-weight: bold;
+}
+
+.item-description {
+  font-weight: 400;
+}
+
+.item-price {
+  color: #888;
+}
+
+.item-quantity {
+  flex: 0 0 50px;
+  text-align: center;
+}
+
+.item-actions {
+  flex: 0 0 100px;
+  text-align: center;
+}
+
+.item-remove-btn {
+  color: #e74c3c;
+  cursor: pointer;
+}
+
+#cart-page-checkout-btn {
+  background-color: #2f7dfc;
+  padding: 10px 15px;
+  font-size: 1.1rem;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  border: none;
+  display: block;
+  margin: 0 auto;
+}
+
+.fa-cart-arrow-down {
+  font-size: 30px;
+  color: white;
+  background-color: black;
+  padding: 8px 10px 8px 6px;
+  border-radius: 10%;
+}
+
+
+input[type="number"]{
+  font-size: 1rem;
+  width: 5rem;
+  text-align: center;
+}
+
+
+

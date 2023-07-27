@@ -1,5 +1,6 @@
 
-const { userExists, addNewUser, queryProducts, cartExists, pushToCart } = require('../database/database')
+const { userExists, addNewUser, queryProducts, cartExists, 
+    pushToCart, queryCartItems,queryCategoryProducts } = require('../database/database')
 const bcrypt = require("bcrypt");
 
 const loginRoute = (req, res) => {
@@ -87,11 +88,44 @@ const checkCart = async (req,res) =>{
 
 }
 
+const getCartItems = async (req,res) =>{
+    const { user_id } = req.query;
+    try{
+        const result = await queryCartItems(user_id);
+        if(result.length > 0){
+            return res.json(result);
+        }
+        else{
+            return res.send(false);
+        }
+    } catch(err) {
+        console.log("Failed to fetch cart items", err);
+    }
+}
+
+const getCategoryProducts = async (req,res) =>{
+    const { category_name } = req.query;
+    try{
+        const result = await queryCategoryProducts(category_name);
+        if(result.length > 0){
+            return res.json(result);
+        }
+        else{
+            return res.send(false);
+        }
+    } catch(err) {
+        console.log("Failed to fetch category products", err);
+    }
+    
+}
+
 module.exports = {
     loginRoute,
     registerRoute,
     isLoggedIn,
     getProducts,
     addToCart,
-    checkCart
+    checkCart,
+    getCartItems,
+    getCategoryProducts
 }

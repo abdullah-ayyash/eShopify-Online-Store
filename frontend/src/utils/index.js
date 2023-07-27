@@ -77,6 +77,21 @@ export const addToCart = async (product_id, quantity, user_id) => {
 export const checkCart = async (product_id, user_id) =>{
   const url = `http://localhost:8000/auth/cart-check?product_id=${product_id}&user_id=${user_id}`;
   const response = await fetch(url);
-  const json = response.json(response)
+  const json = response.json(response);
   return json;
 }
+
+export const getCartItems = async (user_id) =>{
+  const url = `http://localhost:8000/auth/cart-items?user_id=${user_id}`;
+  const response = await fetch(url);
+  const json = response.json(response);
+  return json;
+}
+
+export const getCategoryProducts = async (category_name) =>{
+  const url = `http://localhost:8000/auth/category-products?category_name=${category_name}`;
+  const response = await fetch(url);
+  const json = response.json(response);
+  return json;
+}
+// Create a page for each category and have above function connected to them.

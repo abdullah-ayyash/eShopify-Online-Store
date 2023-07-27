@@ -3,10 +3,11 @@ import { useState } from "react";
 import { Tab, Tabs } from "@mui/material";
 import Box from '@mui/material/Box';
 import Profile from './Profile';
-import Cart from './Cart';
+import Cart from '../products/Cart';
 
 function User({ isLoggedIn, userData }) {
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
+  
 
   const handleTabChange = (e, tabIndex) => {
     console.log(tabIndex);
@@ -38,7 +39,7 @@ function User({ isLoggedIn, userData }) {
         {/* TAB 2 Contents */}
         {currentTabIndex === 1 && (
           <Box sx={{ p: 3 }}>
-            <Cart />
+            <Cart isLoggedIn={isLoggedIn} userData={userData} />
           </Box>
         )}
 

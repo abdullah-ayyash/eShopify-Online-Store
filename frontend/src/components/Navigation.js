@@ -66,6 +66,11 @@ function Navigation({ setIsLoggedIn, isLoggedIn }) {
                     <img src={profileIcon} alt='user-profile' />
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink to="/cart">
+                    <i className="fa fa-cart-arrow-down"></i>
+                  </NavLink>
+                </li>
               </>
             }
           </div>

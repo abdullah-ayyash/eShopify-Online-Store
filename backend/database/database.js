@@ -109,7 +109,43 @@ const pushToCart = async (product_id,quantity,user_id)=>{
         console.log('Error while inserting cart items to database:', err);
         throw err;
     }
+}
 
+const queryCartItems = async (user_id) =>{
+    const query = `SELECT cart_items.product_id, cart_items.quantity, products.name, products.price, products.description,categories.name AS category_name FROM cart_items
+    JOIN users ON users.user_id = cart_items.user_id
+    JOIN products ON products.product_id = cart_items.product_id
+    JOIN categories ON categories.category_id = products.category_id
+    WHERE cart_items.user_id = $1;`;
+    const values = [user_id];
+
+    try{
+        const result = await pool.query(query,values);
+        return result.rows;
+
+        
+    } catch (err){
+        console.log('Error while getting cart items from database:', err);
+        throw err;
+    }
+
+}
+
+const queryCategoryProducts = async (category_name) =>{
+    const query = `SELECT products.*, categories.name AS category_name
+    FROM products
+    JOIN categories ON categories.category_id = products.category_id
+    WHERE categories.name = $1;`;
+    const values = [category_name];
+    try{
+        const result = await pool.query(query,values);
+        return result.rows;
+
+        
+    } catch (err){
+        console.log('Error while getting category products from database:', err);
+        throw err;
+    }
 }
 
 
@@ -122,5 +158,7 @@ module.exports = {
     findUserById,
     queryProducts,
     pushToCart,
-    cartExists
+    cartExists,
+    queryCartItems,
+    queryCategoryProducts
 }
