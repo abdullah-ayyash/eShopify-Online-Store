@@ -1,5 +1,7 @@
+import { API_ENDPOINT } from "./endPoint";
+
 export const fetchSessionData = async () => {
-  const data = await fetch('http://localhost:8000/auth/profile', {
+  const data = await fetch(`${API_ENDPOINT}/profile`, {
     method: "GET",
     credentials: 'include'
   });
@@ -10,7 +12,7 @@ export const fetchSessionData = async () => {
 
 
 export const registerAccount = async (registerUserName, fullName, registerEmail, registerPassword) => {
-  const url = 'http://localhost:8000/auth/register';
+  const url = `${API_ENDPOINT}/register`;
   const data = {
     username: registerUserName,
     fullName: fullName,
@@ -27,7 +29,7 @@ export const registerAccount = async (registerUserName, fullName, registerEmail,
 }
 
 export const accountLogin = async (loginUserName, loginPassword) => {
-  const url = 'http://localhost:8000/auth/login';
+  const url = `${API_ENDPOINT}/login`;
   const data = {
     username: loginUserName,
     password: loginPassword
@@ -43,7 +45,7 @@ export const accountLogin = async (loginUserName, loginPassword) => {
 }
 
 export const fetchProducts = async () => {
-  const url = 'http://localhost:8000/auth/products';
+  const url = `${API_ENDPOINT}/products`;
   const response = await fetch(url);
   const json = await response.json();
   return json;
@@ -51,7 +53,7 @@ export const fetchProducts = async () => {
 
 export const addToCart = async (product_id, quantity, user_id) => {
   if (user_id && quantity && product_id) {
-    const url = 'http://localhost:8000/auth/add-to-cart';
+    const url = `${API_ENDPOINT}/add-to-cart`;
     const data = {
       product_id,
       quantity,
@@ -75,21 +77,21 @@ export const addToCart = async (product_id, quantity, user_id) => {
 
 // Check only if the user is logged in
 export const checkCart = async (product_id, user_id) => {
-  const url = `http://localhost:8000/auth/cart-check?product_id=${product_id}&user_id=${user_id}`;
+  const url = `${API_ENDPOINT}/cart-check?product_id=${product_id}&user_id=${user_id}`;
   const response = await fetch(url);
   const json = response.json(response);
   return json;
 }
 
 export const getCartItems = async (user_id) => {
-  const url = `http://localhost:8000/auth/cart-items?user_id=${user_id}`;
+  const url = `${API_ENDPOINT}/cart-items?user_id=${user_id}`;
   const response = await fetch(url);
   const json = response.json(response);
   return json;
 }
 
 export const getCategoryProducts = async (category_name) => {
-  const url = `http://localhost:8000/auth/category-products?category_name=${category_name}`;
+  const url = `${API_ENDPOINT}/category-products?category_name=${category_name}`;
   const response = await fetch(url);
   const json = response.json(response);
   return json;
@@ -101,4 +103,19 @@ export const capitalizeFirstLetter = (word) => {
   const remainingLetters = word.slice(1);
   const capitalizedWord = firstLetterCap + remainingLetters;
   return capitalizedWord;
+}
+
+export const deleteCartItem = async (user_id, item_id) => {
+  const url = `${API_ENDPOINT}/cart-item?user_id=${user_id}&item_id=${item_id}`;
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    credentials: 'include'
+  });
+  if (!response.ok) {
+    // Handle response error
+    throw new Error('Network response was not ok');
+  }
+  const json = response.json(response);
+  return json;
 }

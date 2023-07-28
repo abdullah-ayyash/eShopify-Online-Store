@@ -1,8 +1,11 @@
 import { useState } from "react";
 
-function CartCard({item}) {
-    const { description,name,price,quantity,category_name,product_id } = item;
+
+function CartCard({item,deleteItem}) {
+    const { description,name,price,quantity,category_name,product_id,item_id } = item;
     const [newQuantity, setQuantity] = useState(quantity);
+
+    
 
     // Don't forget creating Update Quantity endpoint
     return (
@@ -19,7 +22,7 @@ function CartCard({item}) {
                 <input type="number" min="1" value={newQuantity} onChange={(e)=> setQuantity(e.target.value)} />
             </div>
             <div className="item-actions">
-                <span className="item-remove-btn">Remove</span>
+                <span className="item-remove-btn" onClick={() => deleteItem(item_id)}>Remove</span>
             </div>
         </div>
     );

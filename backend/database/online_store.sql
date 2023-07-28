@@ -41,8 +41,8 @@ CREATE TABLE products_categories (
 
 CREATE TABLE users_cart_items (
   user_id INTEGER NOT NULL REFERENCES users (user_id) ON DELETE CASCADE,
-  product_id INTEGER NOT NULL REFERENCES products (product_id) ON DELETE CASCADE,
-  PRIMARY KEY (user_id, product_id)
+  item_id INTEGER NOT NULL REFERENCES cart_items (item_id) ON DELETE CASCADE,
+  PRIMARY KEY (user_id, item_id)
 );
 
 -- Queries for adding demo products

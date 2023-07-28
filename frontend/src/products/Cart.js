@@ -2,10 +2,12 @@ import CartCard from "./CartCard";
 import { useEffect, useState } from "react";
 import { getCartItems } from "../utils";
 import { useNavigate } from 'react-router-dom';
-import Loader from '../components/Loader'
+import Loader from '../components/Loader';
+import { deleteCartItem } from "../utils";
 
 function Cart({ isLoggedIn, userData }) {
   const [cartData, setCartData] = useState(null);
+  const [cartChange, setCartChange] = useState();
   const navigate = useNavigate();
   useEffect(() => {
     if (isLoggedIn) {
@@ -24,7 +26,18 @@ function Cart({ isLoggedIn, userData }) {
     }
 
 
-  }, []);
+  }, [cartChange]);
+
+  const deleteItem = async (item_id) => {
+    const result = await deleteCartItem(userData.user_id, item_id);
+    if(result === true){
+      setCartChange(item_id);
+    }
+    else{
+      console.log('Failed to remove item from cart');
+    }
+    
+  }
 
   if (!isLoggedIn) {
     navigate("/login");
@@ -33,13 +46,13 @@ function Cart({ isLoggedIn, userData }) {
     return <Loader />
   }
   if (cartData === 0) {
-    return <h1>You have no cart items</h1>
+    return <h1 id="category-heading">You have no cart items</h1>
   }
   return (
     <div className="cart-container">
       <h1>MY CART ITEMS</h1>
       {
-          cartData.map((item,index) => <CartCard item={item} key={index} />)
+        cartData.map((item, index) => <CartCard item={item} deleteItem={deleteItem} key={index} />)
       }
       <button id="cart-page-checkout-btn">Proceed to Checkout</button>
     </div>

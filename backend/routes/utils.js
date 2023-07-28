@@ -1,6 +1,6 @@
 
 const { userExists, addNewUser, queryProducts, cartExists, 
-    pushToCart, queryCartItems,queryCategoryProducts } = require('../database/database')
+    pushToCart, queryCartItems,queryCategoryProducts,deleteCartItem } = require('../database/database')
 const bcrypt = require("bcrypt");
 
 const loginRoute = (req, res) => {
@@ -119,6 +119,21 @@ const getCategoryProducts = async (req,res) =>{
     }
     
 }
+const removeCartItem = async (req,res) =>{
+    const { user_id, item_id } = req.query;
+    try{
+        const result = await deleteCartItem(user_id,item_id);
+        if(result.length > 0){
+            return res.send(true);
+        }
+        else{
+            return res.send(false);
+        }
+
+    } catch(err){
+        console.log("Failed to remove cart item", err);
+    }
+}
 
 module.exports = {
     loginRoute,
@@ -128,5 +143,6 @@ module.exports = {
     addToCart,
     checkCart,
     getCartItems,
-    getCategoryProducts
+    getCategoryProducts,
+    removeCartItem
 }

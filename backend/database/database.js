@@ -93,16 +93,17 @@ const cartExists = async (user_id,product_id ) => {
 }
 
 const pushToCart = async (product_id,quantity,user_id)=>{
-    const query1 = "INSERT INTO cart_items (product_id, quantity, user_id) VALUES ($1, $2, $3)"
+    const query1 = "INSERT INTO cart_items (product_id, quantity, user_id) VALUES ($1, $2, $3) RETURNING item_id"
     const values1 = [product_id,quantity, user_id];
 
-    const query2 = "INSERT INTO users_cart_items (user_id, product_id) VALUES ($1, $2)"
-    const values2 = [user_id,product_id];
+    const query2 = "INSERT INTO users_cart_items (user_id, item_id) VALUES ($1, $2) RETURNING *"
 
     try{
         const results1 = await pool.query(query1,values1);
+        const item_id = results1.rows[0].item_id;
+        const values2 = [user_id,item_id];
         const results2 = await pool.query(query2,values2);
-        return results1.rows;
+        return results2.rows;
 
         
     } catch (err){
@@ -112,7 +113,7 @@ const pushToCart = async (product_id,quantity,user_id)=>{
 }
 
 const queryCartItems = async (user_id) =>{
-    const query = `SELECT cart_items.product_id, cart_items.quantity, products.name, products.price, products.description,categories.name AS category_name FROM cart_items
+    const query = `SELECT cart_items.product_id,cart_items.item_id, cart_items.quantity, products.name, products.price, products.description,categories.name AS category_name FROM cart_items
     JOIN users ON users.user_id = cart_items.user_id
     JOIN products ON products.product_id = cart_items.product_id
     JOIN categories ON categories.category_id = products.category_id
@@ -147,7 +148,19 @@ const queryCategoryProducts = async (category_name) =>{
         throw err;
     }
 }
-
+const deleteCartItem = async (user_id,item_id) =>{
+    const query1 = "DELETE FROM cart_items WHERE user_id = $1 AND item_id = $2 RETURNING *";
+    const query2 = "DELETE FROM users_cart_items WHERE user_id = $1 AND item_id = $2 RETURNING *"
+    const values = [user_id, item_id];
+    try{
+        const result1 = await pool.query(query1,values);
+        const result2 = await pool.query(query2,values);
+        return result1.rows;
+    } catch (err){
+        console.log('Error removing items from database:', err);
+        throw err;
+    }
+}
 
 
 module.exports = {
@@ -160,5 +173,6 @@ module.exports = {
     pushToCart,
     cartExists,
     queryCartItems,
-    queryCategoryProducts
+    queryCategoryProducts,
+    deleteCartItem
 }
