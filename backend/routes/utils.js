@@ -108,6 +108,7 @@ const getCategoryProducts = async (req,res) =>{
     try{
         const result = await queryCategoryProducts(category_name);
         if(result.length > 0){
+            
             return res.json(result);
         }
         else{

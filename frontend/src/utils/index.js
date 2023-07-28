@@ -50,7 +50,7 @@ export const fetchProducts = async () => {
 }
 
 export const addToCart = async (product_id, quantity, user_id) => {
-  if(user_id && quantity && product_id){
+  if (user_id && quantity && product_id) {
     const url = 'http://localhost:8000/auth/add-to-cart';
     const data = {
       product_id,
@@ -66,7 +66,7 @@ export const addToCart = async (product_id, quantity, user_id) => {
     const json = await response.json();
     return json;
   }
-  else{
+  else {
     alert('Please login first');
   }
 
@@ -74,24 +74,31 @@ export const addToCart = async (product_id, quantity, user_id) => {
 }
 
 // Check only if the user is logged in
-export const checkCart = async (product_id, user_id) =>{
+export const checkCart = async (product_id, user_id) => {
   const url = `http://localhost:8000/auth/cart-check?product_id=${product_id}&user_id=${user_id}`;
   const response = await fetch(url);
   const json = response.json(response);
   return json;
 }
 
-export const getCartItems = async (user_id) =>{
+export const getCartItems = async (user_id) => {
   const url = `http://localhost:8000/auth/cart-items?user_id=${user_id}`;
   const response = await fetch(url);
   const json = response.json(response);
   return json;
 }
 
-export const getCategoryProducts = async (category_name) =>{
+export const getCategoryProducts = async (category_name) => {
   const url = `http://localhost:8000/auth/category-products?category_name=${category_name}`;
   const response = await fetch(url);
   const json = response.json(response);
   return json;
 }
-// Create a page for each category and have above function connected to them.
+
+export const capitalizeFirstLetter = (word) => {
+  const firstLetter = word.charAt(0);
+  const firstLetterCap = firstLetter.toUpperCase();
+  const remainingLetters = word.slice(1);
+  const capitalizedWord = firstLetterCap + remainingLetters;
+  return capitalizedWord;
+}

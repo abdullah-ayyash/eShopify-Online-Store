@@ -6,20 +6,23 @@ import Loader from '../components/Loader'
 
 
 function Products() {
-  const { productsData, productsLoaded,userData } = useAuth();
+  const { productsData, productsLoaded, userData } = useAuth();
 
   if (!productsLoaded) {
     return <Loader />
   }
   return (
-    <div id="product-cards">
+    <div>
+      <h1 id="category-heading">TOP PICKS</h1>
+      <div id="product-cards">
+        {
+          productsData.map((product) =>
+            <ProductCard product={product} key={product.product_id} imageIndex={product.product_id} userData={userData} />
 
-      {
-        productsData.map((product) =>
-          <ProductCard product={product} key={product.product_id} imageIndex={product.product_id} userData={userData} />
+          )
+        }
+      </div>
 
-        )
-      }
 
 
     </div>

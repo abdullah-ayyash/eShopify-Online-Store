@@ -40,6 +40,9 @@ function ProductCard({ product, imageIndex, userData }) {
         else if (category_id === 2) {
             setCategory('bands');
         }
+        else if (category_id === 3) {
+            setCategory('Bracelets');
+        }
 
     }, []);
 
@@ -51,16 +54,17 @@ function ProductCard({ product, imageIndex, userData }) {
             setCartAdded(true);
         }
     }
-    if(!category){
+    if (!category) {
         return <Loader />
     }
 
     if (category) {
         return (
             <div id="product-card">
-                <img src={require(`../images/${category}/${imageIndex}.webp`)} alt="product" />
+                <img src={require(`../images/${category.toLowerCase()}/${imageIndex}.webp`)} alt="product" />
+                <h4>{category.toUpperCase()}</h4>
                 <h3>{name}</h3>
-                <h4>{price} $</h4>
+                <h5>${price} CAD</h5>
                 <p>{description}</p>
 
                 {

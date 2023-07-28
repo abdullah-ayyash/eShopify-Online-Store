@@ -289,6 +289,16 @@ header ul {
   flex-wrap: wrap;
   column-gap: 16px;
 }
+#category-list > #link{
+  text-decoration: none;
+  color: black;
+  transition: all .5s;
+  transition-timing-function: ease-out;
+}
+#category-list > #link:hover{
+  color: #2f7dfc;
+  /* color: #0047AB; */
+}
 
 .category-item {
   text-align: center;
@@ -301,6 +311,7 @@ header ul {
 }
 
 #category-heading {
+  text-align: center;
   font-size: 1.8rem;
   color: black;
   background-color: #e5e5f7;
@@ -309,7 +320,7 @@ header ul {
   background-size: 10px 10px;
   margin: 0;
   padding: 20px 0;
-  text-decoration: overline;
+
 
 }
 
@@ -356,8 +367,20 @@ header ul {
   height: auto;
 }
 
+#product-card > h3{
+  font-size: 1.4rem;
+  
+}
+
 #product-card>h4 {
+  margin: 5px 0 0 0;
+  color: #4f5362;
+  
+}
+#product-card>h5 {
   color: darkgreen;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 #product-card-btn {

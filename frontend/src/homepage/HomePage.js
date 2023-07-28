@@ -6,7 +6,6 @@ function HomePage() {
     return (
       <div>
         <ShopByCategory />
-        <center><h2 id="top-picks-heading">Top Picks</h2></center>
         <Products />
       </div>
     );

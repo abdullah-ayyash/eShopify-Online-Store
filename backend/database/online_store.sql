@@ -85,5 +85,22 @@ VALUES
   (LASTVAL(), 2);
   
 
+-- Insert bracelets products
+INSERT INTO products (name, price, description, category_id)
+VALUES
+  ('Elegant Silver Bracelet', 29.99, 'A stunning silver bracelet with intricate designs.', 3),
+  ('Rose Gold Charm Bracelet', 39.99, 'A beautiful rose gold charm bracelet with various charms.', 3),
+  ('Leather Wrap Bracelet', 24.99, 'A stylish leather wrap bracelet with a buckle closure.', 3),
+  ('Pearl Beaded Bracelet', 19.99, 'A classic pearl beaded bracelet with a silver clasp.', 3),
+  ('Bohemian Tassel Bracelet', 14.99, 'A bohemian-style tassel bracelet with colorful beads.', 3);
+
+-- Insert products_categories
+INSERT INTO products_categories (product_id, category_id)
+VALUES
+  (LASTVAL() - 4, 3), -- Elegant Silver Bracelet
+  (LASTVAL() - 3, 3), -- Rose Gold Charm Bracelet
+  (LASTVAL() - 2, 3), -- Leather Wrap Bracelet
+  (LASTVAL() - 1, 3), -- Pearl Beaded Bracelet
+  (LASTVAL(), 3); -- Bohemian Tassel Bracelet
 
 

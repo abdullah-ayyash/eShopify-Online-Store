@@ -13,6 +13,7 @@ import HomePage from './homepage/HomePage.js'
 import Products from './products/Products';
 import AnnouncementBar from './components/AnnouncementBar';
 import Cart from './products/Cart';
+import Category from './categories/Category';
 
 
 
@@ -121,7 +122,9 @@ function App() {
         <Route path='/' element={<HomePage />} >
         </Route>
 
-        
+        <Route path='/category/:categoryName' element={ <Category />}>
+
+        </Route>
         {/* <Route path="*" element={<NoMatch />} /> */}
       </Routes>
     </Router>
