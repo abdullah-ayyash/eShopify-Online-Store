@@ -13,6 +13,7 @@ export function AuthProvider({ children }) {
   const [isAuthLoaded, setIsAuthLoaded] = useState(false);
   const [ productsData, setproductsData] = useState(false);
   const [ productsLoaded, setProductsLoaded] = useState(false);
+  const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
 
@@ -23,11 +24,11 @@ export function AuthProvider({ children }) {
         setUserData(response);
       }
       else {
-        console.log('User is not logged in');
         setIsLoggedIn(false);
       }
       setIsAuthLoaded(true);
     }).catch(console.error);
+
     // getting products
     fetchProducts().then(response =>{
       if(response){
@@ -35,7 +36,8 @@ export function AuthProvider({ children }) {
         setProductsLoaded(true);
       }
       else{
-        console.log('There are no products');
+        setProductsLoaded(true);
+        // I have to handle this case more effectively.
       }
 
     }).catch(console.error);
@@ -45,7 +47,8 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, userData, 
-    setUserData,isAuthLoaded, setIsAuthLoaded,productsData,productsLoaded }}>
+    setUserData,isAuthLoaded, setIsAuthLoaded,productsData,productsLoaded,
+    cartTotal, setCartTotal }}>
       {children}
     </AuthContext.Provider>
   );

@@ -45,6 +45,16 @@ CREATE TABLE users_cart_items (
   PRIMARY KEY (user_id, item_id)
 );
 
+CREATE TABLE orders (
+  order_id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+  order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  total_amount NUMERIC NOT NULL,
+  status VARCHAR(50) NOT NULL,
+  shipping_address TEXT NOT NULL
+);
+
+
 -- Queries for adding demo products
 
 INSERT INTO categories (name) VALUES ('Watches');

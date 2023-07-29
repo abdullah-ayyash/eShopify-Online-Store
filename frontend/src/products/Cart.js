@@ -1,13 +1,14 @@
 import CartCard from "./CartCard";
 import { useEffect, useState } from "react";
-import { getCartItems } from "../utils";
 import { useNavigate } from 'react-router-dom';
 import Loader from '../components/Loader';
-import { deleteCartItem } from "../utils";
+import { getCartItems,sumTotal,deleteCartItem,updateItemQuantity } from "../utils";
+import { useAuth } from "../authenticate/AuthContext";
 
 function Cart({ isLoggedIn, userData }) {
   const [cartData, setCartData] = useState(null);
-  const [cartChange, setCartChange] = useState();
+  const [cartChange, setCartChange] = useState(true);
+  const { cartTotal, setCartTotal } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     if (isLoggedIn) {
@@ -18,7 +19,7 @@ function Cart({ isLoggedIn, userData }) {
             setCartData(0);
           }
           else {
-            console.log(response);
+            setCartTotal(sumTotal(response));
             setCartData(response);
           }
         }).catch(console.error);
@@ -30,13 +31,23 @@ function Cart({ isLoggedIn, userData }) {
 
   const deleteItem = async (item_id) => {
     const result = await deleteCartItem(userData.user_id, item_id);
-    if(result === true){
-      setCartChange(item_id);
+    if (result === true) {
+      setCartChange(!cartChange);
     }
-    else{
+    else {
       console.log('Failed to remove item from cart');
     }
-    
+
+  }
+
+  const updateQuantityHandler = async (item_id,quantity) =>{
+    const result = await updateItemQuantity(userData.user_id,item_id,quantity);
+    if(result === true){
+      setCartChange(!cartChange);
+    }
+    else{
+      console.log('Failed to change cart item quantity');
+    }
   }
 
   if (!isLoggedIn) {
@@ -52,8 +63,24 @@ function Cart({ isLoggedIn, userData }) {
     <div className="cart-container">
       <h1>MY CART ITEMS</h1>
       {
-        cartData.map((item, index) => <CartCard item={item} deleteItem={deleteItem} key={index} />)
+        cartData.map((item, index) => <CartCard item={item} deleteItem={deleteItem} 
+        updateQuantityHandler={updateQuantityHandler} key={index} />)
       }
+      <div>
+        <h2>Cart Totals</h2>
+        <table border="1">
+        <tbody>
+          <tr>
+            <td>Subtotal</td>
+            <td>${cartTotal.toFixed(2)} CAD</td>
+          </tr>
+          <tr>
+            <td><b>Total</b></td>
+            <td><b>${cartTotal.toFixed(2)} CAD</b></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
       <button id="cart-page-checkout-btn">Proceed to Checkout</button>
     </div>
   );

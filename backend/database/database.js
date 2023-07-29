@@ -161,6 +161,22 @@ const deleteCartItem = async (user_id,item_id) =>{
         throw err;
     }
 }
+const updateItemQuantity = async (user_id,item_id,quantity) =>{
+    const query = 'UPDATE cart_items SET quantity = $1 WHERE user_id = $2 AND item_id = $3';
+    const values = [quantity,user_id, item_id];
+    try{
+        const result = await pool.query(query,values);
+        if(result.rowCount > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    } catch(err){
+        console.log('Error updaing item quantity in database',err);
+        throw err;
+    }
+}
 
 
 module.exports = {
@@ -174,5 +190,6 @@ module.exports = {
     cartExists,
     queryCartItems,
     queryCategoryProducts,
-    deleteCartItem
+    deleteCartItem,
+    updateItemQuantity
 }

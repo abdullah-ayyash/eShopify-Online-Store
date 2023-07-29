@@ -119,3 +119,31 @@ export const deleteCartItem = async (user_id, item_id) => {
   const json = response.json(response);
   return json;
 }
+
+export const sumTotal = (cartData) =>{
+  let total = 0;
+  for (const item of cartData) {
+    const itemPrice = Number(item.price) * Number(item.quantity);
+    total += itemPrice; 
+  }
+  return total;
+}
+
+export const updateItemQuantity = async (user_id,item_id,quantity) =>{
+  const url = `${API_ENDPOINT}/cart-quantity`;
+  const data = {
+    user_id,
+    item_id,
+    quantity
+  }
+  const response = await fetch(url, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+    credentials: 'include'
+  });
+  const json = await response.json();
+  console.log(json);
+  console.log(typeof json);
+  return json;
+}

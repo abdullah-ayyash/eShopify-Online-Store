@@ -1,6 +1,6 @@
 
-const { userExists, addNewUser, queryProducts, cartExists, 
-    pushToCart, queryCartItems,queryCategoryProducts,deleteCartItem } = require('../database/database')
+const { userExists, addNewUser, queryProducts, cartExists, pushToCart, queryCartItems,
+    queryCategoryProducts,deleteCartItem,updateItemQuantity } = require('../database/database')
 const bcrypt = require("bcrypt");
 
 const loginRoute = (req, res) => {
@@ -79,7 +79,7 @@ const checkCart = async (req,res) =>{
             return res.send(false);
         }
         else if(result.length > 0){
-            console.log("Product already in cart");
+            // console.log("Product already in cart");
             return res.send(true);
         }
     } catch (err) {
@@ -135,6 +135,17 @@ const removeCartItem = async (req,res) =>{
     }
 }
 
+const updateCartQuantity = async (req,res) =>{
+    const { user_id,item_id,quantity } = req.body;
+
+    try{
+        const result = await updateItemQuantity(user_id,item_id,quantity);
+        return res.send(result);
+    } catch(err){
+        console.log("Failed to update cart item quantity", err);
+    }
+}
+
 module.exports = {
     loginRoute,
     registerRoute,
@@ -144,5 +155,6 @@ module.exports = {
     checkCart,
     getCartItems,
     getCategoryProducts,
-    removeCartItem
+    removeCartItem,
+    updateCartQuantity
 }
