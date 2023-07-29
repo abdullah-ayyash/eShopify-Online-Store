@@ -37,14 +37,17 @@ Welcome to ShopNex, a cutting-edge online store web application built using the 
 To run ShopNex locally, follow these steps:
 
 1. Clone the repository:
-
+```javascript
 git clone https://github.com/abdullah-ayyash/eShopify-Online-Store.git
 cd shopnex
+```
 2. Install dependencies for the frontend and backend:
+```javascript
 cd frontend
 npm install
 cd ../backend
 npm install
+```
 
 3. Configure the environment variables:
 
@@ -53,17 +56,19 @@ Create a `.env` file in the `backend` directory and add the required environment
 4. Set up the database:
 
 Ensure you have PostgreSQL installed and create a database for ShopNex. Then, run the database migrations:
-
+```javascript
 cd backend
 npx knex migrate:latest
+```
 
 5. Start the development servers:
 
+```javascript
 cd frontend
 npm start
 cd ../backend
 npm start
-
+```
 
 6. Visit `http://localhost:3000` in your web browser to access the ShopNex application.
 
