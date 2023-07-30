@@ -81,7 +81,8 @@ function Cart({ isLoggedIn, userData }) {
           </tbody>
         </table>
       </div>
-      <button id="cart-page-checkout-btn">Proceed to Checkout</button>
+
+      <button id="cart-page-checkout-btn" onClick={() => navigate("/shipping-details")}>Proceed to Checkout</button>
     </div>
   );
 }

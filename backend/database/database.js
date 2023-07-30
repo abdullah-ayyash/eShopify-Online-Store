@@ -62,7 +62,13 @@ const addNewUser = async (userObj) => {
     const values = [username,fullName, email, password];
     try{
         const results = await pool.query(query,values);
-        return results.rows[0];
+        if(results.rowCount > 0){
+            return results.rows;
+        }
+        else{
+            return false;
+        }
+        
     } catch (err){
         console.log('Error while querying the database:', err);
         throw err;

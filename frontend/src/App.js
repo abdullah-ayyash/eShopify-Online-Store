@@ -14,7 +14,8 @@ import Products from './products/Products';
 import AnnouncementBar from './components/AnnouncementBar';
 import Cart from './products/Cart';
 import Category from './categories/Category';
-
+import ShippingDetails from './products/ShippingDetails';
+import Checkout from './products/Checkout';
 
 
 function App() {
@@ -122,9 +123,15 @@ function App() {
         <Route path='/' element={<HomePage />} >
         </Route>
 
-        <Route path='/category/:categoryName' element={ <Category />}>
-
+        <Route path='/category/:categoryName' element={ <Category /> }>
         </Route>
+
+        <Route path='/shipping-details' element={ isLoggedIn ? <ShippingDetails />  : <Navigate to="/" /> }>
+        </Route>
+
+        <Route path='/checkout' element={ isLoggedIn ? <Checkout />  : <Navigate to="/" /> } >
+        </Route>
+
         {/* <Route path="*" element={<NoMatch />} /> */}
       </Routes>
     </Router>

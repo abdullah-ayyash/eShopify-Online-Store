@@ -7,7 +7,6 @@ function Register({ setRegisterUserName, setfullName, setRegisterEmail, setRegis
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(isLoggedIn);
         if (isLoggedIn) {
             navigate("/");
         }

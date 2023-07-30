@@ -2,11 +2,20 @@
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
   username VARCHAR(50) NOT NULL UNIQUE,
+  fullname VARCHAR(50) NOT NULL,
   email VARCHAR(100) NOT NULL UNIQUE,
   password VARCHAR(100) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+-- categories Table:
+CREATE TABLE categories (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
 
 -- products Table:
 CREATE TABLE products (
@@ -15,12 +24,6 @@ CREATE TABLE products (
     price NUMERIC NOT NULL,
     description TEXT,
     category_id INTEGER NOT NULL REFERENCES categories(category_id) ON DELETE CASCADE
-);
-
--- categories Table:
-CREATE TABLE categories (
-    category_id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
 );
 
 -- cart_items Table:
@@ -45,6 +48,18 @@ CREATE TABLE users_cart_items (
   PRIMARY KEY (user_id, item_id)
 );
 
+CREATE TABLE shipping_details (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  address VARCHAR(150) NOT NULL,
+  country VARCHAR(50) NOT NULL,
+  postal_code VARCHAR(25) NOT NULL,
+  city VARCHAR(25) NOT NULL,
+  provance VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE orders (
   order_id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
@@ -53,6 +68,18 @@ CREATE TABLE orders (
   status VARCHAR(50) NOT NULL,
   shipping_address TEXT NOT NULL
 );
+
+-- cross reference table 
+CREATE TABLE order_items (
+  order_id INTEGER NOT NULL REFERENCES orders(order_id) ON DELETE CASCADE,
+  product_id INTEGER NOT NULL REFERENCES products(product_id) ON DELETE CASCADE,
+  quantity INTEGER NOT NULL,
+  subtotal NUMERIC NOT NULL,
+  PRIMARY KEY (order_id, product_id)
+);
+
+
+
 
 
 -- Queries for adding demo products

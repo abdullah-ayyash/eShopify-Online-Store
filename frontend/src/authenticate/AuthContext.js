@@ -14,6 +14,13 @@ export function AuthProvider({ children }) {
   const [ productsData, setproductsData] = useState(false);
   const [ productsLoaded, setProductsLoaded] = useState(false);
   const [cartTotal, setCartTotal] = useState(0);
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [address, setAddress] = useState('');
+  const [country, setCountry] = useState('');
+  const [postalCode, setPostalCode] = useState('');
+  const [city, setCity] = useState('');
+  const [provance, setProvance] = useState('');
 
   useEffect(() => {
 
@@ -48,7 +55,9 @@ export function AuthProvider({ children }) {
   return (
     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, userData, 
     setUserData,isAuthLoaded, setIsAuthLoaded,productsData,productsLoaded,
-    cartTotal, setCartTotal }}>
+    cartTotal, setCartTotal,firstname,setFirstname, lastname, setLastname,
+    address, setAddress, country, setCountry, postalCode, setPostalCode,
+    city, setCity, provance, setProvance }}>
       {children}
     </AuthContext.Provider>
   );
