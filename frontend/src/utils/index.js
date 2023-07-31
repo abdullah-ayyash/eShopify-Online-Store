@@ -165,3 +165,27 @@ export const addNewAddress = async (addressObj) =>{
   const json = await response.json();
   return json;
 }
+
+export const createShippingAddress = (addressObj) =>{
+  const { address,city,country,provance,postal_code  } = addressObj;
+  const textAddress =  address + ' '  + city + ' ' + provance + ', ' + country + ' ' + postal_code;
+  return textAddress;
+}
+
+export const addNewOrder = async (user_id, shipping_address,cartData) =>{
+  const url = `${API_ENDPOINT}/add-new-order`;
+  const data = {
+    user_id, 
+    shipping_address,
+    cartData
+  }
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data),
+    credentials: 'include'
+  });
+  const json = await response.json()
+  return json;
+}
+

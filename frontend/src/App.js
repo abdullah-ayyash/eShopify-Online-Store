@@ -16,6 +16,7 @@ import Cart from './products/Cart';
 import Category from './categories/Category';
 import ShippingDetails from './products/ShippingDetails';
 import Checkout from './products/Checkout';
+import Orders from './products/Orders';
 
 
 function App() {
@@ -130,6 +131,9 @@ function App() {
         </Route>
 
         <Route path='/checkout' element={ isLoggedIn ? <Checkout />  : <Navigate to="/" /> } >
+        </Route>
+
+        <Route path='/orders' element={ isLoggedIn ? <Orders /> : <Navigate to="/" /> } >
         </Route>
 
         {/* <Route path="*" element={<NoMatch />} /> */}

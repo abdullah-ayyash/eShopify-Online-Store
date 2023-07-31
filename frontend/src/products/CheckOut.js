@@ -1,17 +1,19 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../authenticate/AuthContext';
+import { createShippingAddress,addNewOrder } from '../utils';
 
 function Checkout() {
     const navigate = useNavigate();
-    const { firstname, lastname,
-        address, country, postalCode,
-        city, provance, cartData } = useAuth();
+    const { cartData,userData,addressData } = useAuth();
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();
-        console.log(firstname,lastname,address,country,postalCode,city,provance);
-        console.log(cartData);
+        const textAddress = createShippingAddress(addressData);
+        const result = await addNewOrder(userData.user_id, textAddress,cartData);
+        if(result === true){
+            navigate('/orders');
+        }
     }
     return (
         <div id='checkout-container'>

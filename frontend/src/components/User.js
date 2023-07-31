@@ -6,6 +6,7 @@ import Profile from './Profile';
 import Cart from '../products/Cart';
 import Addresses from "../products/Addresses";
 import { useAuth } from "../authenticate/AuthContext";
+import Orders from "../products/Orders";
 
 function User({ isLoggedIn, userData }) {
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
@@ -24,6 +25,7 @@ function User({ isLoggedIn, userData }) {
           <Tab label='Profile info' sx={{ fontSize: 16 }} />
           <Tab label='Cart' sx={{ fontSize: 16 }} />
           <Tab label='Addresses' sx={{ fontSize: 16 }} />
+          <Tab label='Orders' sx={{ fontSize: 16 }} />
         </Tabs>
       </div>
 
@@ -49,6 +51,13 @@ function User({ isLoggedIn, userData }) {
         {currentTabIndex === 2 && (
           <Box sx={{ p: 3 }}>
             <Addresses isLoggedIn={isLoggedIn} userData={userData} addressData={addressData} />
+          </Box>
+        )}
+
+        {/* TAB 4 Contents */}
+        {currentTabIndex === 3 && (
+          <Box sx={{ p: 3 }}>
+            <Orders />
           </Box>
         )}
 

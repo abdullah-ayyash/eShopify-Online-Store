@@ -1,6 +1,7 @@
 
 const { userExists, addNewUser, queryProducts, cartExists, pushToCart, queryCartItems,
-    queryCategoryProducts,deleteCartItem,updateItemQuantity,fetchAddress, addNewAddress } = require('../database/database')
+    queryCategoryProducts,deleteCartItem,updateItemQuantity,fetchAddress, createNewOrder
+     } = require('../database/database')
 const bcrypt = require("bcrypt");
 
 const loginRoute = (req, res) => {
@@ -166,6 +167,17 @@ const pushNewAddress = async (req,res) =>{
     }
 }
 
+const addNewOrder = async (req,res) =>{
+    const { user_id, shipping_address,cartData } = req.body;
+    try{
+        const result = await createNewOrder(user_id, shipping_address,cartData);
+        res.json(result);
+    }catch(err){
+        console.log("Failed to create a new order", err);
+    }
+    
+}
+
 module.exports = {
     loginRoute,
     registerRoute,
@@ -178,5 +190,6 @@ module.exports = {
     removeCartItem,
     updateCartQuantity,
     getAddress,
-    pushNewAddress
+    pushNewAddress,
+    addNewOrder
 }

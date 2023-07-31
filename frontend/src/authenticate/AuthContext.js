@@ -63,7 +63,7 @@ export function AuthProvider({ children }) {
     if (isLoggedIn) {
       getAddress(userData.user_id).then(response => {
         if (response.rowCount > 0) {
-          console.log(response.rows);
+          console.log(response.rows[0]);
           setAddressDate(response.rows[0]);
         }
         else if (response.rowCount === 0) {
