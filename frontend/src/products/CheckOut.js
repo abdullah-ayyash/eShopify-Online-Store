@@ -1,18 +1,28 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../authenticate/AuthContext';
 
 function Checkout() {
     const navigate = useNavigate();
+    const { firstname, lastname,
+        address, country, postalCode,
+        city, provance, cartData } = useAuth();
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        console.log(firstname,lastname,address,country,postalCode,city,provance);
+        console.log(cartData);
+    }
     return (
         <div id='checkout-container'>
             <h1>Checkout</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <formfield id="ccn">
                     <label htmlFor="ff1_input">Credit Card Number</label>
-                    <input id="ff1_input" type="text" maxlength="4" placeholder="0000" name="cno" autofocus />
-                    <input type="text" maxlength="4" placeholder="0000" name="cno" />
-                    <input type="text" maxlength="4" placeholder="0000" name="cno" />
-                    <input type="text" maxlength="4" placeholder="0000" name="cno" />
+                    <input id="ff1_input" type="text" maxLength="4" placeholder="0000" name="cno" autoFocus />
+                    <input type="text" maxLength="4" placeholder="0000" name="cno" />
+                    <input type="text" maxLength="4" placeholder="0000" name="cno" />
+                    <input type="text" maxLength="4" placeholder="0000" name="cno" />
                 </formfield>
                 <formfield id="ch">
                     <label htmlFor="ff2_input">Card Holder</label>
@@ -58,7 +68,7 @@ function Checkout() {
                 </formfield>
                 <formfield id="sc">
                     <label htmlFor="ff4_input">Security Code</label>
-                    <input id="ff4_input" type="text" maxlength="3" placeholder="000" />
+                    <input id="ff4_input" type="text" maxLength="3" placeholder="000" />
                     <input type="submit" value="submit" />
                     <button className="back-button" onClick={() => navigate("/shipping-details")}>Back to cart</button>
                 </formfield>

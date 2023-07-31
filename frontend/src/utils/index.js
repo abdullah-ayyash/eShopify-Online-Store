@@ -25,7 +25,6 @@ export const registerAccount = async (registerUserName, fullName, registerEmail,
     body: JSON.stringify(data)
   });
   const json = await response.json();
-  console.log(json);
   return json;
 }
 
@@ -72,29 +71,27 @@ export const addToCart = async (product_id, quantity, user_id) => {
   else {
     alert('Please login first');
   }
-
-
 }
 
 // Check only if the user is logged in
 export const checkCart = async (product_id, user_id) => {
   const url = `${API_ENDPOINT}/cart-check?product_id=${product_id}&user_id=${user_id}`;
   const response = await fetch(url);
-  const json = response.json(response);
+  const json = response.json();
   return json;
 }
 
 export const getCartItems = async (user_id) => {
   const url = `${API_ENDPOINT}/cart-items?user_id=${user_id}`;
   const response = await fetch(url);
-  const json = response.json(response);
+  const json = response.json();
   return json;
 }
 
 export const getCategoryProducts = async (category_name) => {
   const url = `${API_ENDPOINT}/category-products?category_name=${category_name}`;
   const response = await fetch(url);
-  const json = response.json(response);
+  const json = response.json();
   return json;
 }
 
@@ -117,7 +114,7 @@ export const deleteCartItem = async (user_id, item_id) => {
     // Handle response error
     throw new Error('Network response was not ok');
   }
-  const json = response.json(response);
+  const json = response.json();
   return json;
 }
 
@@ -144,7 +141,27 @@ export const updateItemQuantity = async (user_id,item_id,quantity) =>{
     credentials: 'include'
   });
   const json = await response.json();
-  console.log(json);
-  console.log(typeof json);
+  return json;
+}
+
+export const getAddress = async (user_id) =>{
+  const url = `${API_ENDPOINT}/get-address?user_id=${user_id}`;
+  const response = await fetch(url);
+  const json = await response.json();
+  return json;
+}
+
+export const addNewAddress = async (addressObj) =>{
+  const url = `${API_ENDPOINT}/add-address`;
+  const data = {
+    ...addressObj
+  }
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data),
+    credentials: 'include'
+  });
+  const json = await response.json();
   return json;
 }

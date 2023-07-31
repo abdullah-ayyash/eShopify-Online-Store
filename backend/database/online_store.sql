@@ -53,7 +53,7 @@ CREATE TABLE shipping_details (
   user_id INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
   first_name VARCHAR(50) NOT NULL,
   last_name VARCHAR(50) NOT NULL,
-  address VARCHAR(150) NOT NULL,
+  address VARCHAR(150) NOT NULL UNIQUE,
   country VARCHAR(50) NOT NULL,
   postal_code VARCHAR(25) NOT NULL,
   city VARCHAR(25) NOT NULL,

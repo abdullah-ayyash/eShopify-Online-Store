@@ -6,9 +6,9 @@ import { getCartItems,sumTotal,deleteCartItem,updateItemQuantity } from "../util
 import { useAuth } from "../authenticate/AuthContext";
 
 function Cart({ isLoggedIn, userData }) {
-  const [cartData, setCartData] = useState(null);
+  
   const [cartChange, setCartChange] = useState(true);
-  const { cartTotal, setCartTotal } = useAuth();
+  const { cartTotal, setCartTotal,cartData, setCartData } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     if (isLoggedIn) {

@@ -44,7 +44,7 @@ function ProductCard({ product, imageIndex, userData }) {
             setCategory('Bracelets');
         }
 
-    }, []);
+    }, [isLoggedIn]);
 
     const addToCartHandler = async () => {
         const response = await addToCart(product_id, quantity, user_id);

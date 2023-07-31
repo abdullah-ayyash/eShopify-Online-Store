@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require("passport");
 const { loginRoute, registerRoute, isLoggedIn,getProducts,addToCart,checkCart
-  ,getCartItems,getCategoryProducts,removeCartItem,updateCartQuantity } = require('./utils')
+  ,getCartItems,getCategoryProducts,removeCartItem,updateCartQuantity,getAddress,pushNewAddress } = require('./utils')
 
 // Consider creating one router for authentication and one for fetching product info 
 
@@ -35,5 +35,9 @@ router.get('/category-products',getCategoryProducts);
 
 router.delete('/cart-item',removeCartItem);
 router.put('/cart-quantity', updateCartQuantity);
+
+router.get('/get-address',getAddress);
+
+router.post('/add-address',pushNewAddress);
 
 module.exports = router;

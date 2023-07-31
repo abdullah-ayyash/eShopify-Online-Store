@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import logo from '../logo.png'
 import profileIcon from '../images/user.png'
 
-
 function Navigation({ setIsLoggedIn, isLoggedIn }) {
 
   const logoutHandler = async (e) => {
@@ -13,7 +12,7 @@ function Navigation({ setIsLoggedIn, isLoggedIn }) {
     });
     console.log(response);
     setIsLoggedIn(false);
-    window.location.reload();
+    // window.location.reload();
   }
 
   return (
@@ -74,13 +73,8 @@ function Navigation({ setIsLoggedIn, isLoggedIn }) {
               </>
             }
           </div>
-
-
         </ul>
-
       </header>
-
-
     </div>
   );
 }

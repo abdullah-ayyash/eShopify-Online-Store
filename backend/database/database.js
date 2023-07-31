@@ -168,7 +168,7 @@ const deleteCartItem = async (user_id,item_id) =>{
     }
 }
 const updateItemQuantity = async (user_id,item_id,quantity) =>{
-    const query = 'UPDATE cart_items SET quantity = $1 WHERE user_id = $2 AND item_id = $3';
+    const query = "UPDATE cart_items SET quantity = $1 WHERE user_id = $2 AND item_id = $3";
     const values = [quantity,user_id, item_id];
     try{
         const result = await pool.query(query,values);
@@ -180,6 +180,36 @@ const updateItemQuantity = async (user_id,item_id,quantity) =>{
         }
     } catch(err){
         console.log('Error updaing item quantity in database',err);
+        throw err;
+    }
+}
+
+const fetchAddress = async (user_id) =>{
+    const query = "SELECT * FROM shipping_details WHERE user_id = $1";
+    const values = [user_id];
+    try{
+        const result = await pool.query(query,values);
+        return result;
+    } catch(err){
+        console.log('Error fetching user address from database',err);
+        throw err;
+    }
+}
+
+const addNewAddress = async (userId,firstname,lastname,address,country,postalCode,city,provance) =>{
+    const query = `INSERT INTO shipping_details (user_id,first_name, last_name, address, country, postal_code, city, provance) 
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
+    const values = [userId,firstname,lastname,address,country,postalCode,city,provance];
+    try{
+        const result = await pool.query(query,values);
+        if(result.rowCount > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    } catch(err){
+        console.log('Error adding address to database',err);
         throw err;
     }
 }
@@ -197,5 +227,7 @@ module.exports = {
     queryCartItems,
     queryCategoryProducts,
     deleteCartItem,
-    updateItemQuantity
+    updateItemQuantity,
+    fetchAddress,
+    addNewAddress
 }

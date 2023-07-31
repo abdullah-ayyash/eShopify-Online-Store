@@ -1,6 +1,6 @@
 
 const { userExists, addNewUser, queryProducts, cartExists, pushToCart, queryCartItems,
-    queryCategoryProducts,deleteCartItem,updateItemQuantity } = require('../database/database')
+    queryCategoryProducts,deleteCartItem,updateItemQuantity,fetchAddress, addNewAddress } = require('../database/database')
 const bcrypt = require("bcrypt");
 
 const loginRoute = (req, res) => {
@@ -146,6 +146,26 @@ const updateCartQuantity = async (req,res) =>{
     }
 }
 
+const getAddress = async (req,res) =>{
+    const { user_id } = req.query;
+    try{
+        const result = await fetchAddress(user_id);
+        return res.json(result);
+    } catch(err){
+        console.log("Failed to get user address", err);
+    }
+}
+
+const pushNewAddress = async (req,res) =>{
+    const { userId,firstname,lastname,address,country,postalCode,city,provance } = req.body;
+    try{
+        const result = await addNewAddress(userId,firstname,lastname,address,country,postalCode,city,provance);
+        res.json(result);
+    }catch(err){
+        console.log("Failed to push address to database", err);
+    }
+}
+
 module.exports = {
     loginRoute,
     registerRoute,
@@ -156,5 +176,7 @@ module.exports = {
     getCartItems,
     getCategoryProducts,
     removeCartItem,
-    updateCartQuantity
+    updateCartQuantity,
+    getAddress,
+    pushNewAddress
 }

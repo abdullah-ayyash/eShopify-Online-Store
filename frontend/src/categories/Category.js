@@ -14,7 +14,6 @@ function Watches() {
 
     useEffect(() => {
         getCategoryProducts(capitalizeFirstLetter(categoryName)).then(response => {
-            console.log(response);
             setProductData(response);
             setProductsLoaded(true);
         });
