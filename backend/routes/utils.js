@@ -1,6 +1,6 @@
 
 const { userExists, addNewUser, queryProducts, cartExists, pushToCart, queryCartItems,
-    queryCategoryProducts,deleteCartItem,updateItemQuantity,fetchAddress, createNewOrder
+    queryCategoryProducts,deleteCartItem,updateItemQuantity,fetchAddress,addNewAddress, createNewOrder, fetchOrders
      } = require('../database/database')
 const bcrypt = require("bcrypt");
 
@@ -178,6 +178,18 @@ const addNewOrder = async (req,res) =>{
     
 }
 
+const getOrders = async (req,res) =>{
+    const { user_id } = req.query;
+    try{
+        const response = await fetchOrders(user_id);
+        res.status(200).json(response);
+    } catch(err){
+        console.log('Error getting orders from database');
+    }
+
+
+}
+
 module.exports = {
     loginRoute,
     registerRoute,
@@ -191,5 +203,6 @@ module.exports = {
     updateCartQuantity,
     getAddress,
     pushNewAddress,
-    addNewOrder
+    addNewOrder,
+    getOrders
 }

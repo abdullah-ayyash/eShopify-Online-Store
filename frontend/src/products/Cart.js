@@ -19,7 +19,6 @@ function Cart({ isLoggedIn, userData }) {
             setCartData(0);
           }
           else {
-            console.log(response);
             setCartTotal(sumTotal(response));
             setCartData(response);
           }

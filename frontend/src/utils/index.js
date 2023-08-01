@@ -68,9 +68,6 @@ export const addToCart = async (product_id, quantity, user_id) => {
     const json = await response.json();
     return json;
   }
-  else {
-    alert('Please login first');
-  }
 }
 
 // Check only if the user is logged in
@@ -189,3 +186,9 @@ export const addNewOrder = async (user_id, shipping_address,cartData) =>{
   return json;
 }
 
+export const getOrders = async (user_id) =>{
+  const url = `${API_ENDPOINT}/get-orders?user_id=${user_id}`;
+  const response = await fetch(url);
+  const json = await response.json();
+  return json;
+}

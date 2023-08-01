@@ -1,6 +1,6 @@
 // AuthContext.js
 import { createContext, useContext, useState, useEffect } from 'react';
-import { fetchSessionData, fetchProducts, getAddress } from '../utils/index'
+import { fetchSessionData, fetchProducts, getAddress,getOrders } from '../utils/index'
 const AuthContext = createContext();
 
 export function useAuth() {
@@ -25,6 +25,8 @@ export function AuthProvider({ children }) {
   const [addressData, setAddressDate] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
   const [addressChange, setAddressChange] = useState(false);
+  const [orderData, setOrderData] = useState(null);
+  const [orderDataChange, setOrderDataChange] = useState(false);
 
   useEffect(() => {
     // Independant Call
@@ -61,17 +63,28 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     if (isLoggedIn) {
+      // getting address data
       getAddress(userData.user_id).then(response => {
         if (response.rowCount > 0) {
-          console.log(response.rows[0]);
           setAddressDate(response.rows[0]);
         }
         else if (response.rowCount === 0) {
           setAddressDate(0);
         }
       }).catch(console.error);
+
+      // getting orders data
+      getOrders(userData.user_id).then(response => {
+        if(response){
+          setOrderData(response);
+          console.log(response);
+        }
+        else{
+          setOrderData(0); // create a case for no orders.
+        }
+      }).catch(console.error);
     }
-  }, [isLoggedIn,addressChange])
+  }, [isLoggedIn,addressChange,orderDataChange])
 
   return (
     <AuthContext.Provider value={{
@@ -80,7 +93,8 @@ export function AuthProvider({ children }) {
       cartTotal, setCartTotal, firstname, setFirstname, lastname, setLastname,
       address, setAddress, country, setCountry, postalCode, setPostalCode,
       city, setCity, provance, setProvance, cartData, setCartData, addressData, setAddressDate,
-      isClicked, setIsClicked,addressChange, setAddressChange
+      isClicked, setIsClicked,addressChange, setAddressChange,orderData, setOrderData,
+      orderDataChange, setOrderDataChange
     }}>
       {children}
     </AuthContext.Provider>

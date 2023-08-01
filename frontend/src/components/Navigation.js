@@ -10,7 +10,6 @@ function Navigation({ setIsLoggedIn, isLoggedIn }) {
       method: 'POST',
       credentials: 'include'
     });
-    console.log(response);
     setIsLoggedIn(false);
     // window.location.reload();
   }

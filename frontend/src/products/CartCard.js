@@ -1,19 +1,15 @@
-// import { useState } from "react";
 
 
 function CartCard({item,deleteItem,updateQuantityHandler}) {
     const { description,name,price,quantity,category_name,product_id,item_id } = item;
-    // const [newQuantity, setNewQuantity] = useState(quantity);
-    // const [initialRender, setInitialRender] = useState(true);
-
 
 
     // There is a swapping (mismatch, missassinment) issue at first change of quantity. Look into it.
     const quantityOnChange = async (e) =>{
-        await updateQuantityHandler(item_id,e.target.value);
+        const intQuantity = parseInt(e.target.value);
+        await updateQuantityHandler(item_id,intQuantity);
     }
     
-    // Don't forget creating Update Quantity endpoint
     return (
         <div className="cart-item">
             <div className="item-image">

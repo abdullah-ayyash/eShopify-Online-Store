@@ -5,13 +5,14 @@ import { createShippingAddress,addNewOrder } from '../utils';
 
 function Checkout() {
     const navigate = useNavigate();
-    const { cartData,userData,addressData } = useAuth();
+    const { cartData,userData,addressData, setOrderDataChange } = useAuth();
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
         const textAddress = createShippingAddress(addressData);
         const result = await addNewOrder(userData.user_id, textAddress,cartData);
         if(result === true){
+            setOrderDataChange(prevOrderDataChange => !prevOrderDataChange);
             navigate('/orders');
         }
     }
@@ -19,19 +20,19 @@ function Checkout() {
         <div id='checkout-container'>
             <h1>Checkout</h1>
             <form onSubmit={handleSubmit}>
-                <formfield id="ccn">
+                <div id="ccn">
                     <label htmlFor="ff1_input">Credit Card Number</label>
                     <input id="ff1_input" type="text" maxLength="4" placeholder="0000" name="cno" autoFocus />
                     <input type="text" maxLength="4" placeholder="0000" name="cno" />
                     <input type="text" maxLength="4" placeholder="0000" name="cno" />
                     <input type="text" maxLength="4" placeholder="0000" name="cno" />
-                </formfield>
-                <formfield id="ch">
+                </div>
+                <div id="ch">
                     <label htmlFor="ff2_input">Card Holder</label>
                     <input id="ff2_input" type="text" placeholder="First Name" />
                     <input type="text" placeholder="Last Name" />
-                </formfield>
-                <formfield id="ed">
+                </div>
+                <div id="ed">
                     <label>Expiration Date</label>
                     <select id="month">
                         <option value="01">01</option>
@@ -67,13 +68,13 @@ function Checkout() {
                         <option value="39">39</option>
                         <option value="40">40</option>
                     </select>
-                </formfield>
-                <formfield id="sc">
+                </div>
+                <div id="sc">
                     <label htmlFor="ff4_input">Security Code</label>
                     <input id="ff4_input" type="text" maxLength="3" placeholder="000" />
                     <input type="submit" value="submit" />
                     <button className="back-button" onClick={() => navigate("/shipping-details")}>Back to cart</button>
-                </formfield>
+                </div>
             </form>
 
         </div>

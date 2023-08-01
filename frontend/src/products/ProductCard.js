@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { addToCart, checkCart } from "../utils";
 import { useAuth } from "../authenticate/AuthContext";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Loader from '../components/Loader'
 
 
@@ -11,6 +11,8 @@ function ProductCard({ product, imageIndex, userData }) {
     const [cartAdded, setCartAdded] = useState(false);
     const { isLoggedIn } = useAuth();
     const [category, setCategory] = useState(null);
+    const navigate = useNavigate();
+
     let user_id = false;
     if (userData) {
         user_id = userData.user_id;
@@ -34,6 +36,11 @@ function ProductCard({ product, imageIndex, userData }) {
             }
 
         }
+        else {
+            setCartAdded(false);
+        }
+
+        // Independant of login
         if (category_id === 1) {
             setCategory('watches');
         }
@@ -47,12 +54,17 @@ function ProductCard({ product, imageIndex, userData }) {
     }, [isLoggedIn]);
 
     const addToCartHandler = async () => {
-        const response = await addToCart(product_id, quantity, user_id);
-        console.log(response);
-        if (response === true) {
-
-            setCartAdded(true);
+        if (isLoggedIn) {
+            const response = await addToCart(product_id, quantity, user_id);
+            if (response === true) {
+                setCartAdded(true);
+            }
         }
+        else{
+            navigate('/login');
+        }
+
+
     }
     if (!category) {
         return <Loader />

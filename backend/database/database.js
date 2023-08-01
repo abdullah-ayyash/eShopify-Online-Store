@@ -123,7 +123,7 @@ const queryCartItems = async (user_id) => {
     JOIN users ON users.user_id = cart_items.user_id
     JOIN products ON products.product_id = cart_items.product_id
     JOIN categories ON categories.category_id = products.category_id
-    WHERE cart_items.user_id = $1;`;
+    WHERE cart_items.user_id = $1 ORDER BY item_id ASC;`;
     const values = [user_id];
 
     try {
@@ -243,6 +243,28 @@ const createNewOrder = async (user_id, shipping_address,cartData) => {
     }
 }
 
+const fetchOrders = async (user_id) =>{
+    const query = `SELECT users.user_id, order_items.product_id,order_items.quantity,order_items.subtotal, order_items.order_id,
+    products.name AS title, categories.name AS category,orders.status,orders,order_date FROM order_items
+    JOIN orders ON orders.order_id = order_items.order_id
+    JOIN users ON users.user_id = orders.user_id
+    JOIN products ON products.product_id = order_items.product_id
+    JOIN categories ON categories.category_id = products.category_id
+    WHERE orders.user_id = $1;`;
+    const values = [user_id];
+    try{
+        const result = await pool.query(query,values);
+        if(result.rowCount > 0){
+            return result.rows;
+        }else{
+            return false;
+        }
+
+    } catch(err){
+        console.log('Error fetching orders from database', err);
+        throw err;
+    }
+}
 
 module.exports = {
     findByUsername,
@@ -258,5 +280,7 @@ module.exports = {
     deleteCartItem,
     updateItemQuantity,
     fetchAddress,
-    createNewOrder
+    addNewAddress,
+    createNewOrder,
+    fetchOrders
 }
