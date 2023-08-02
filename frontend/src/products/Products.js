@@ -21,7 +21,6 @@ function Products() {
         {
           productsData.map((product) =>
             <ProductCard product={product} key={product.product_id} imageIndex={product.product_id} userData={userData} />
-
           )
         }
       </div>

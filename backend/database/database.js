@@ -96,7 +96,10 @@ const updateUserInfo = async (email,password,fullname,user_id) =>{
 }
 
 const queryProducts = async () => {
-    const query = 'SELECT * FROM products';
+    const query = `SELECT products.product_id, products.name,products.price,products.description,
+    categories.name AS category_name,products.content
+    FROM products
+    JOIN categories ON categories.category_id = products.category_id;`;
     try {
         const results = await pool.query(query);
         return results.rows;

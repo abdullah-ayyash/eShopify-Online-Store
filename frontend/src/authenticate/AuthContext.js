@@ -78,7 +78,6 @@ export function AuthProvider({ children }) {
       getOrders(userData.user_id).then(response => {
         if(response){
           setOrderData(response);
-          console.log(response);
         }
         else{
           setOrderData(0); // create a case for no orders.

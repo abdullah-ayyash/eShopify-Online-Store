@@ -18,7 +18,7 @@ import ShippingDetails from './products/ShippingDetails';
 import Checkout from './products/Checkout';
 import Orders from './products/Orders';
 import EditProfile from './components/EditProfile';
-
+import Product from './products/Product';
 
 function App() {
   // states
@@ -125,7 +125,10 @@ function App() {
         <Route path='/' element={<HomePage />} >
         </Route>
 
-        <Route path='/category/:categoryName' element={ <Category /> }>
+        <Route path='/category/:categoryName' element={ <Category /> } >
+        </Route>
+
+        <Route path='/product/:id' element={ <Product />} >
         </Route>
 
         <Route path='/shipping-details' element={ isLoggedIn ? <ShippingDetails />  : <Navigate to="/" /> }>

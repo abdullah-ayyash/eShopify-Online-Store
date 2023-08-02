@@ -377,11 +377,12 @@ header ul {
 #product-card>img {
   width: 100%;
   height: auto;
+  cursor: pointer;
 }
 
 #product-card > h3{
   font-size: 1.4rem;
-  
+  cursor: pointer;
 }
 
 #product-card>h4 {
@@ -985,4 +986,100 @@ hr {
   font-size: 1.2rem;
   padding: 5px 0;
   cursor: pointer;
+}
+#product-page{
+  background-color: white;
+  width: 90%;
+  margin: 1rem auto;
+  display: flex;
+  padding: 2rem 1rem;
+  flex-wrap: wrap;
+  column-gap: 3rem;
+  row-gap: 2rem;
+  justify-content: center;
+  
+}
+
+#product-page-image{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  
+}
+
+#product-page-image > img{
+  width: 100%;
+  height: auto;
+}
+
+#product-page-info{
+  width: 100%;
+  max-width: 650px;
+}
+
+
+#bottom-section > p{
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+#top-section > p{
+  font-size: 1.3rem;
+  color: darkslategray;
+  margin: 0;
+}
+#top-section > h1{
+  font-size: 2rem;
+  margin: 0;
+}
+
+#product-page-info #price{
+  color: #007832;
+}
+
+#top-section {
+  margin-bottom: 1rem;
+}
+#bottom-section{
+  margin-bottom: 1rem;
+}
+
+
+
+
+
+/* CSS */
+.button-37 {
+  background-color: #13aa52;
+  border: 1px solid #13aa52;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-37:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .button-37 {
+    padding: 10px 30px;
+  }
+}
+
+#product-content{
+  font-size: 1.3rem;
 }

@@ -6,12 +6,13 @@ import { getCategoryProducts } from "../utils";
 import { useParams } from "react-router-dom";
 import { capitalizeFirstLetter } from "../utils";
 
-function Watches() {
+function Category() {
     const { userData } = useAuth();
     const [productData, setProductData] = useState();
     const [productsLoaded, setProductsLoaded] = useState(false);
     const { categoryName } = useParams();
 
+    // I could improve performance by getting category based products from state
     useEffect(() => {
         getCategoryProducts(capitalizeFirstLetter(categoryName)).then(response => {
             setProductData(response);
@@ -37,4 +38,4 @@ function Watches() {
     )
 }
 
-export default Watches;
+export default Category;

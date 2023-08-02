@@ -6,11 +6,11 @@ import Loader from '../components/Loader'
 
 
 function ProductCard({ product, imageIndex, userData }) {
-    const { category_id, description, name, price, product_id } = product;
-    const [quantity, setQuantity] = useState(1);
+    const { category_name, description, name, price, product_id } = product;
+    
+    const [quantity, setQuantity] = useState(1); // implement it
     const [cartAdded, setCartAdded] = useState(false);
     const { isLoggedIn } = useAuth();
-    const [category, setCategory] = useState(null);
     const navigate = useNavigate();
 
     let user_id = false;
@@ -40,16 +40,7 @@ function ProductCard({ product, imageIndex, userData }) {
             setCartAdded(false);
         }
 
-        // Independant of login
-        if (category_id === 1) {
-            setCategory('watches');
-        }
-        else if (category_id === 2) {
-            setCategory('bands');
-        }
-        else if (category_id === 3) {
-            setCategory('Bracelets');
-        }
+
 
     }, [isLoggedIn]);
 
@@ -60,39 +51,37 @@ function ProductCard({ product, imageIndex, userData }) {
                 setCartAdded(true);
             }
         }
-        else{
+        else {
             navigate('/login');
         }
 
 
     }
-    if (!category) {
-        return <Loader />
-    }
 
-    if (category) {
-        return (
-            <div id="product-card">
-                <img src={require(`../images/${category.toLowerCase()}/${imageIndex}.webp`)} alt="product" />
-                <h4>{category.toUpperCase()}</h4>
-                <h3>{name}</h3>
-                <h5>${price} CAD</h5>
-                <p>{description}</p>
 
-                {
-                    cartAdded ?
-                        <Link to="/cart"><button id="product-card-checkout-btn">PROCEED TO CHECKOUT</button> </Link>
-                        :
-                        <button id="product-card-btn" onClick={addToCartHandler}>ADD TO CART
-                        </button>
-                }
+    return (
+        <div id="product-card">
+            <img src={require(`../images/${category_name.toLowerCase()}/${imageIndex}.webp`)} alt="product" 
+            onClick={() => navigate(`/product/${product_id}`)} />
+            <h4>{category_name.toUpperCase()}</h4>
+            <h3 onClick={() => navigate(`/product/${product_id}`)}>{name}</h3>
+            <h5>${price} CAD</h5>
+            <p>{description}</p>
+
+            {
+                cartAdded ?
+                    <Link to="/cart"><button id="product-card-checkout-btn">PROCEED TO CHECKOUT</button> </Link>
+                    :
+                    <button id="product-card-btn" onClick={addToCartHandler}>ADD TO CART
+                    </button>
+            }
 
 
 
-            </div>
+        </div>
 
-        );
-    }
+    );
+
 
 
 }
