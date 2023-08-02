@@ -1,11 +1,12 @@
 
 const { userExists, addNewUser, queryProducts, cartExists, pushToCart, queryCartItems,
-    queryCategoryProducts,deleteCartItem,updateItemQuantity,fetchAddress,addNewAddress, createNewOrder, fetchOrders
+    queryCategoryProducts,deleteCartItem,updateItemQuantity,fetchAddress,addNewAddress, createNewOrder, fetchOrders,
+    updateUserInfo
      } = require('../database/database')
 const bcrypt = require("bcrypt");
 
 const loginRoute = (req, res) => {
-    res.json(req.user);
+    res.status(200).json(req.user);
 }
 
 const registerRoute = async (req, res) => {
@@ -31,6 +32,21 @@ const registerRoute = async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
+}
+
+const changeUserInfo = async (req,res) =>{
+    const { email,password,fullname,user_id } = req.body;
+    try{
+        const salt = await bcrypt.genSalt(3);
+        const hashedPassword = await bcrypt.hash(password,salt);
+
+        const result = await updateUserInfo(email,hashedPassword,fullname,user_id);
+        console.log("Changed");
+        res.json(result);
+    } catch(err){
+        console.log('Error changing user info',err);
+    }
+    
 }
 
 const isLoggedIn = (req, res) => {
@@ -204,5 +220,6 @@ module.exports = {
     getAddress,
     pushNewAddress,
     addNewOrder,
-    getOrders
+    getOrders,
+    changeUserInfo
 }

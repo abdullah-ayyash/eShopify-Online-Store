@@ -17,6 +17,7 @@ import Category from './categories/Category';
 import ShippingDetails from './products/ShippingDetails';
 import Checkout from './products/Checkout';
 import Orders from './products/Orders';
+import EditProfile from './components/EditProfile';
 
 
 function App() {
@@ -134,6 +135,9 @@ function App() {
         </Route>
 
         <Route path='/orders' element={ isLoggedIn ? <Orders /> : <Navigate to="/" /> } >
+        </Route>
+
+        <Route path='/edit-profile' element={ isLoggedIn ? <EditProfile /> : <Navigate to="/" /> } >
         </Route>
 
         {/* <Route path="*" element={<NoMatch />} /> */}

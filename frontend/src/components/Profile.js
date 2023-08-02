@@ -1,6 +1,8 @@
 import profilePhoto from '../images/profile-photo.png'
+import { useNavigate } from 'react-router-dom';
 
 function Profile({ isLoggedIn, userData }) {
+  const navigate = useNavigate();
   const { created_at, email, fullname, username } = userData;
   const dateObject = new Date(created_at);
   const year = dateObject.getFullYear();
@@ -17,8 +19,10 @@ function Profile({ isLoggedIn, userData }) {
           <p><strong>Joined: </strong>{year}</p>
           <p><strong>Email: </strong>{email}</p>
         </div>
-
+        
+        <button onClick={()=> navigate('/edit-profile')}>Edit Info</button>
       </section>
+      
     </div>
   );
 }

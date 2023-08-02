@@ -241,6 +241,17 @@ header ul {
   width: 100%;
 }
 
+#profile-info-section > button {
+  padding: 5px 0;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: forestgreen;
+  color: white;
+  border: none;
+}
+
 #profile-info p {
   font-size: 1.5rem;
 }
@@ -934,4 +945,44 @@ hr {
 
 #orders-page h1{
   text-align: center;
+}
+
+#edit-profile-container{
+  background-color: white;
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#edit-profile-container > h1{
+  text-align: center;
+}
+#edit-profile-container > form{
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+#edit-profile-container > form > div > input{
+  font-size: 1.2rem;
+  padding: 5px 5px;
+}
+#edit-profile-container > form > div > label{
+  font-weight: 600;
+  text-transform: uppercase;
+}
+#edit-profile-container > form > input[type="submit"]{
+  background-color: white;
+  border: 2px solid #4CAF50;
+  font-size: 1.2rem;
+  padding: 5px 0;
+  cursor: pointer;
+}
+#edit-profile-container > form > button{
+  background-color: white;
+  border: 2px solid black;
+  font-size: 1.2rem;
+  padding: 5px 0;
+  cursor: pointer;
 }

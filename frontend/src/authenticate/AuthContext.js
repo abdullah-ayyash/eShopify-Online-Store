@@ -27,6 +27,7 @@ export function AuthProvider({ children }) {
   const [addressChange, setAddressChange] = useState(false);
   const [orderData, setOrderData] = useState(null);
   const [orderDataChange, setOrderDataChange] = useState(false);
+  const [userInfoChange, setUserInfoChange] = useState(false);
 
   useEffect(() => {
     // Independant Call
@@ -58,7 +59,7 @@ export function AuthProvider({ children }) {
     };
     fetchData();
 
-  }, []);
+  }, [userInfoChange]);
 
 
   useEffect(() => {
@@ -94,7 +95,7 @@ export function AuthProvider({ children }) {
       address, setAddress, country, setCountry, postalCode, setPostalCode,
       city, setCity, provance, setProvance, cartData, setCartData, addressData, setAddressDate,
       isClicked, setIsClicked,addressChange, setAddressChange,orderData, setOrderData,
-      orderDataChange, setOrderDataChange
+      orderDataChange, setOrderDataChange,userInfoChange, setUserInfoChange
     }}>
       {children}
     </AuthContext.Provider>

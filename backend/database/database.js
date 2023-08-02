@@ -75,6 +75,26 @@ const addNewUser = async (userObj) => {
     }
 }
 
+const updateUserInfo = async (email,password,fullname,user_id) =>{
+    const query = `UPDATE users 
+    SET email= $1, password = $2, fullname = $3
+    WHERE user_id = $4;`;
+    const values = [email,password,fullname,user_id];
+    try {
+        const results = await pool.query(query, values);
+        if (results.rowCount > 0) {
+            return results.rows;
+        }
+        else {
+            return false;
+        }
+
+    } catch (err) {
+        console.log('Error while updating user info', err);
+        throw err;
+    }
+}
+
 const queryProducts = async () => {
     const query = 'SELECT * FROM products';
     try {
@@ -282,5 +302,6 @@ module.exports = {
     fetchAddress,
     addNewAddress,
     createNewOrder,
-    fetchOrders
+    fetchOrders,
+    updateUserInfo
 }

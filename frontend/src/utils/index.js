@@ -28,6 +28,23 @@ export const registerAccount = async (registerUserName, fullName, registerEmail,
   return json;
 }
 
+export const changeUserInfo = async (email,password,fullname,user_id) =>{
+  const url = `${API_ENDPOINT}/update-user-info`
+  const data = {
+    email,
+    password,
+    fullname,
+    user_id
+  }
+  const response = await fetch(url, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  const json = await response.json();
+  return json;
+}
+
 export const accountLogin = async (loginUserName, loginPassword) => {
   const url = `${API_ENDPOINT}/login`;
   const data = {
