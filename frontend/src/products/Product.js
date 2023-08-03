@@ -6,78 +6,71 @@ import { checkCart,addToCart } from '../utils';
 
 
 function Product() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const intId = parseInt(id)
     const { productsData, productsLoaded,isLoggedIn,userData } = useAuth();
-    const [productData, setProductData] = useState(null);
-    const [paragraphs, setParagraphs] = useState();
-
+    const [singleProductData, setSingleProductData] = useState(null);
     const [cartAdded, setCartAdded] = useState(false);
-    const navigate = useNavigate();
+    
 
     useEffect(() => {
+
         if (productsLoaded) {
             const data = productsData.filter(item => item.product_id === intId);
             if (data.length > 0) {
-                setProductData(...data);
+                const text = data[0].content.split('\n\n');
+                setSingleProductData({...data[0],content:text});
             }
             else {
-                setProductData(0);
+                setSingleProductData(0);
             }
-
-            
-            if (isLoggedIn && productData) {
-                // spliting paragraphs
-                const text = productData.content.split('\n\n');
-                setParagraphs(text);
-                // Cart Added check
-                try {
-                    checkCart(productData.product_id, userData.user_id).then(response => {
-                        if (response === true) {
-                            setCartAdded(true);
-                        }
-                        else {
-                            setCartAdded(false);
-                        }
-    
-                    })
-                } catch (err) {
-                    console.log(err);
-                }
-    
-            }
-            else {
-                setCartAdded(false);
-            }
-
         }
 
+    }, [productsLoaded]);
 
+    useEffect(() => {
+        const checkCartStatus = async () => {
+          if (isLoggedIn && singleProductData) {
+            try {
+              const response = await checkCart(singleProductData.product_id, userData.user_id);
+              setCartAdded(response);
+            } catch (err) {
+              console.log(err);
+            }
+          } else {
+            setCartAdded(false);
+          }
+        };
+        checkCartStatus();
+      }, [isLoggedIn, singleProductData, userData.user_id]);
+      
 
-    }, [productsLoaded, isLoggedIn,productData])
-
-    const addToCartHandler = async () => {
+      const addToCartHandler = async () => {
         if (isLoggedIn) {
+          try {
             const response = await addToCart(product_id, 1, userData.user_id);
             if (response === true) {
-                setCartAdded(true);
+              setCartAdded(true);
+            } else {
+              console.log("failed to add to cart");
             }
+          } catch (error) {
+            console.log(error);
+          }
+        } else {
+          navigate('/login');
         }
-        else {
-            navigate('/login');
-        }
-    }
+      };
+      
 
-    if (productData === null) {
+    if (singleProductData === null) {
         return <Loader />
     }
-    if (productData === 0) {
+    if (singleProductData === 0) {
         return <h1>Product does not exist</h1>
     }
-    const { product_id, content, description, name, price, category_name } = productData;
-    if(!paragraphs){
-        return <Loader />
-    }
+    const { product_id, content, description, name, price, category_name } = singleProductData;
     return (
         <div>
             <div id='product-page'>
@@ -105,13 +98,15 @@ function Product() {
                         }
 
                     </section>
+
                     <section id='product-content'>
                         <h3>Description</h3>
                         {
-                            paragraphs.map((p,index) => <p key={index}>{p}</p>)
+                            content.map((p,index) => <p key={index}>{p}</p>)
                         }
                         
                     </section>
+
                 </section>
 
             </div>
@@ -120,3 +115,15 @@ function Product() {
 }
 
 export default Product
+
+
+    // let paragraphs;
+    // // spliting paragraphs
+    // if(singleProductData.content){
+    
+    //     const text = singleProductData.content.split('\n\n');
+    //     paragraphs = text;
+    // }
+    // else{
+    //     paragraphs = 0;
+    // }
