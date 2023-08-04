@@ -28,6 +28,8 @@ export function AuthProvider({ children }) {
   const [orderData, setOrderData] = useState(null);
   const [orderDataChange, setOrderDataChange] = useState(false);
   const [userInfoChange, setUserInfoChange] = useState(false);
+  const [loginMessage,setLoginMessage] = useState('');
+  const [registerMessage,setRegisterMessage] = useState('');
 
   useEffect(() => {
     // Independant Call
@@ -94,7 +96,7 @@ export function AuthProvider({ children }) {
       address, setAddress, country, setCountry, postalCode, setPostalCode,
       city, setCity, provance, setProvance, cartData, setCartData, addressData, setAddressDate,
       isClicked, setIsClicked,addressChange, setAddressChange,orderData, setOrderData,
-      orderDataChange, setOrderDataChange,userInfoChange, setUserInfoChange
+      orderDataChange, setOrderDataChange,userInfoChange, setUserInfoChange,loginMessage,setLoginMessage,registerMessage,setRegisterMessage
     }}>
       {children}
     </AuthContext.Provider>

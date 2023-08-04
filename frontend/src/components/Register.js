@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../authenticate/AuthContext";
 
 
 function Register({ setRegisterUserName, setfullName, setRegisterEmail, setRegisterPassword,
     registerUserName, fullName, registerEmail, registerPassword, registered, register, isLoggedIn }) {
     const navigate = useNavigate();
 
+    const { registerMessage } = useAuth()
     useEffect(() => {
         if (isLoggedIn) {
             navigate("/");
@@ -16,6 +18,7 @@ function Register({ setRegisterUserName, setfullName, setRegisterEmail, setRegis
             <h2 id="register-form-heading">Sign Up for a new account</h2>
             {registered && <h2 id='register-message'>Registeration is successful.</h2>}
             <form id="register-form">
+                <h3 id="registerMessage">{registerMessage}</h3>
                 <label htmlFor="username">Username: </label>
                 <input type='text' name='username' id='username'
                     onChange={(e) => setRegisterUserName(e.target.value)}

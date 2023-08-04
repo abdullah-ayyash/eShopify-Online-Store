@@ -23,7 +23,7 @@ import Product from './products/Product';
 function App() {
   // states
   const [registered, setRegistered] = useState(false);
-  const { isLoggedIn, setIsLoggedIn, userData, setUserData, isAuthLoaded } = useAuth();
+  const { isLoggedIn, setIsLoggedIn, userData, setUserData, isAuthLoaded,setLoginMessage,setRegisterMessage } = useAuth();
 
 
   // Register states
@@ -37,26 +37,45 @@ function App() {
   const [loginPassword, setLoginPassword] = useState('');
 
 
+
   const register = async (e) => {
     e.preventDefault();
     const response = await registerAccount(registerUserName, fullName, registerEmail, registerPassword);
-    if (response) {
+    if (response.message === 'Registration Successful') {
       setRegistered(true);
       setRegisterUserName('');
       setRegisterEmail('');
       setRegisterPassword('');
       setfullName('');
     }
+    else if(response?.errors?.length > 0){
+      console.log(response.errors[0].msg)
+      setRegisterMessage(response.errors[0].msg);
+    }
   }
 
   const login = async (e) => {
     e.preventDefault();
     const response = await accountLogin(loginUserName, loginPassword);
-    if (response) {
+    if (response.message === 'Login successful') {
+      console.log(response.message)
+      setUserData(response.user);
       setIsLoggedIn(true);
-      setUserData(response);
       setLoginUserName(null);
       setLoginPassword(null);
+    }
+    else if(response.message === 'Incorrect username.'){
+      setLoginMessage(response.message);
+      console.log(response.message)
+    }
+    else if(response.message === 'Incorrect password.'){
+      setLoginMessage(response.message);
+      console.log(response.message)
+    }
+    else if(response?.errors?.length > 0){
+      console.log(response?.errors);
+      console.log(response.errors[0].msg)
+      setLoginMessage(response.errors[0].msg);
     }
   }
   // This take care of which coponents to show ( can do some cleaning to reduce checking )

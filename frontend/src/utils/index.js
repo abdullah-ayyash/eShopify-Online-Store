@@ -25,6 +25,7 @@ export const registerAccount = async (registerUserName, fullName, registerEmail,
     body: JSON.stringify(data)
   });
   const json = await response.json();
+  console.log(json);
   return json;
 }
 

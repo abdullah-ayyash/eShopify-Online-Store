@@ -1083,3 +1083,10 @@ hr {
 #product-content{
   font-size: 1.3rem;
 }
+#loginMessage{
+  color: #e74c3c;
+}
+
+#registerMessage{
+  color: #e74c3c;
+}

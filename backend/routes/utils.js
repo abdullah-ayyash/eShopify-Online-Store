@@ -5,9 +5,9 @@ const { userExists, addNewUser, queryProducts, cartExists, pushToCart, queryCart
      } = require('../database/database')
 const bcrypt = require("bcrypt");
 
-const loginRoute = (req, res) => {
-    res.status(200).json(req.user);
-}
+// const loginRoute = (req, res) => {
+//     res.status(200).json(req.user);
+// }
 
 const registerRoute = async (req, res) => {
     const { username, fullName, email, password } = req.body;
@@ -25,7 +25,8 @@ const registerRoute = async (req, res) => {
         const newUserObj = { username, fullName, email, password: hashedPassword, };
         const newUserReq = await addNewUser(newUserObj);
 
-        res.status(201).json(newUserReq);
+        res.status(201).json({ message: 'Registration Successful', user });
+        
 
 
 
@@ -207,7 +208,6 @@ const getOrders = async (req,res) =>{
 }
 
 module.exports = {
-    loginRoute,
     registerRoute,
     isLoggedIn,
     getProducts,

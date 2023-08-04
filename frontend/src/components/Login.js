@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useAuth } from "../authenticate/AuthContext";
 
 function Login({setLoginUserName, setLoginPassword, login, isLoggedIn,loginUserName, loginPassword}) {
 
     const navigate = useNavigate();
-    
+    const { loginMessage } = useAuth();
     useEffect(() => {
         if (isLoggedIn) {
             navigate("/profile");
@@ -17,6 +18,7 @@ function Login({setLoginUserName, setLoginPassword, login, isLoggedIn,loginUserN
             <div>
                 <h2 id="login-form-heading">Sign in to your account</h2>
                 <form id="login-form">
+                    <h3 id="loginMessage">{loginMessage}</h3>
                     <label htmlFor="login-username">Username: </label>
                     <input type='text' name='username' id='login-username'
                         onChange={(e) => setLoginUserName(e.target.value)}

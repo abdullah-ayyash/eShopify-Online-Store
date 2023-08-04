@@ -5,16 +5,15 @@ const authUser = async (username, password, done) => {
     try {
       const user = await findByUsername(username); 
       if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
+        return done(null, false, { message: 'Username or Password is invalid' });
       }
 
       // Compare the hashed password with the input password using bcrypt.compare
       const passwordMatch = await bcrypt.compare(password, user.password);
 
       if (!passwordMatch) {
-        return done(null, false, { message: 'Incorrect password.' });
+        return done(null, false, { message: 'Username or Password is invalid' });
       }
-      // console.log('It is authenticated..')
       return done(null, user);
     } catch (err) {
       return done(err);

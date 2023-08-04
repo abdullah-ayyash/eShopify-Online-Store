@@ -10,6 +10,9 @@ dotenv.config();
 const { findUserById } = require('./database/database');
 const PORT = process.env.PORT || 8000;
 
+const helmet = require('helmet');
+app.use(helmet());
+
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,10 +34,11 @@ app.use(
 );
 
 
-// app.use(passport.initialize()) 
 
-app.use(passport.session()) 
+app.use(passport.session());
 app.use(passport.authenticate('session'));
+
+
 
 const {authUser} = require('./auth')
 passport.use(new LocalStrategy (authUser));

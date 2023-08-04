@@ -1,16 +1,52 @@
 const express = require('express');
 const router = express.Router();
 const passport = require("passport");
-const { loginRoute, registerRoute, isLoggedIn,getProducts,addToCart,checkCart
+const { query ,body, validationResult } = require('express-validator');
+const { registerRoute, isLoggedIn,getProducts,addToCart,checkCart
   ,getCartItems,getCategoryProducts,removeCartItem,updateCartQuantity,getAddress,pushNewAddress,addNewOrder,getOrders,
   changeUserInfo
   } = require('./utils')
+const { loginInputValidate,LoginInputmiddleware,registerInputValidate,registerInputmiddleware } = require('./validation')
 
-// Consider creating one router for authentication and one for fetching product info 
 
-router.post('/login', passport.authenticate('local'), loginRoute);
+// router.post('/login', passport.authenticate('local'),loginRoute);
 
-router.post("/register", registerRoute);
+// router.post('/login', (req, res, next) => {
+//   passport.authenticate('local', (err, user, info) => {
+//     if (err) {
+//       return next(err);
+//     }
+//     // If authentication failed
+//     if (!user) {
+//       return res.status(401).json({ message: info.message });
+//     }
+//     // If authentication succeeded
+//     return res.status(200).json({ message: 'Login successful', user });
+//   })(req, res, next);
+// });
+
+router.post('/login',loginInputValidate,LoginInputmiddleware, (req, res, next) => {
+
+  passport.authenticate('local', (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    // If authentication failed
+    if (!user) {
+      return res.status(401).json({ message: info.message });
+    }
+    // If authentication succeeded, you can handle the successful login here
+    req.logIn(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      return res.status(200).json({ message: 'Login successful', user });
+    });
+  })(req, res, next);
+});
+
+
+router.post("/register",registerInputValidate, registerInputmiddleware, registerRoute);
 
 router.get("/register", (req, res) => {
   res.send("Hello this is working");
