@@ -43,7 +43,7 @@ function Product() {
           }
         };
         checkCartStatus();
-      }, [isLoggedIn, singleProductData, userData.user_id]);
+      }, [isLoggedIn, singleProductData]);
       
 
       const addToCartHandler = async () => {
