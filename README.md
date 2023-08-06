@@ -12,17 +12,8 @@ Welcome to ShopNex, a cutting-edge online store web application built using the 
 
 - **Real-time Shopping Cart:** Customer shopping carts update in real-time, ensuring a seamless and dynamic shopping experience.
 
-- **Smooth Payment Processing:** ShopNex integrates with trusted payment gateways, enabling secure and swift transactions.
-
 - **Order Tracking and History:** Customers can easily track the status of their orders and access their order history.
 
-- **Product Reviews and Ratings:** Build trust and credibility with customer reviews and ratings.
-
-- **Search and Filter Functionality:** A powerful search and filtering system allows customers to quickly find specific products.
-
-- **Responsive Design:** ShopNex is built with a responsive design, providing seamless performance across various devices.
-
-- **Analytics and Reports:** Gain valuable insights into your business performance with in-depth analytics and reports.
 
 ## Tech Stack
 
