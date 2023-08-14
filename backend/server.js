@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-  origin: ["http://localhost:3000","https://neon-praline-bb9e86.netlify.app"],
+  origin: ["http://localhost:3000","https://lighthearted-faloodeh-a0c4f6.netlify.app"],
   credentials: true
 }));
 
