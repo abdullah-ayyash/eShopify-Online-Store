@@ -4,8 +4,8 @@
   "description": "Welcome to ShopNex, a cutting-edge online store web application built using the PERN (PostgreSQL, Express.js, React.js, Node.js) stack. ShopNex aims to provide an exceptional shopping experience for customers while offering a seamless platform for merchants to manage their online businesses. Whether you're a small boutique owner or an aspiring entrepreneur, ShopNex equips you with the tools needed to succeed in the competitive e-commerce landscape.",
   "main": "index.js",
   "scripts": {
-    "backend:build": "cd server && npm install && npm run build",
-    "backend:start": "cd server && npm start",
+    "backend:build": "cd backend && npm install && npm run build",
+    "backend:start": "cd backend && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "render": {
