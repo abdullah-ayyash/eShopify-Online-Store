@@ -9,21 +9,9 @@ const { registerRoute, isLoggedIn,getProducts,addToCart,checkCart
 const { loginInputValidate,LoginInputmiddleware,registerInputValidate,registerInputmiddleware } = require('./validation')
 
 
-// router.post('/login', passport.authenticate('local'),loginRoute);
-
-// router.post('/login', (req, res, next) => {
-//   passport.authenticate('local', (err, user, info) => {
-//     if (err) {
-//       return next(err);
-//     }
-//     // If authentication failed
-//     if (!user) {
-//       return res.status(401).json({ message: info.message });
-//     }
-//     // If authentication succeeded
-//     return res.status(200).json({ message: 'Login successful', user });
-//   })(req, res, next);
-// });
+router.get('/',(req,res) =>{
+  res.json('<h1>The server is running</h1>')
+})
 
 router.post('/login',loginInputValidate,LoginInputmiddleware, (req, res, next) => {
 
