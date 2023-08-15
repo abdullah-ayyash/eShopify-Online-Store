@@ -34,7 +34,7 @@ app.use(
       maxAge: 24 * 60 * 60 * 1000, 
       secure: envType === 'DEVELOPMENT' ? false : true, 
       sameSite: 'none',
-      domain: 'shopnex.netlify.app'
+      httpOnly:true,
     },
   })
 );
