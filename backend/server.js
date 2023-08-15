@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-  origin: ["http://localhost:3000","https://lighthearted-faloodeh-a0c4f6.netlify.app"],
+  origin: ["http://localhost:3000","https://shopnex.netlify.app"],
   credentials: true
 }));
 
@@ -30,7 +30,7 @@ app.use(
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 24 * 60 * 60 * 1000, secure: envType === 'DEVELOPMENT' ? false : true },
+    cookie: { maxAge: 24 * 60 * 60 * 1000, secure: envType === 'DEVELOPMENT' ? false : true, sameSite: 'none' },
   })
 );
 
