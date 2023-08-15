@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-  origin: ["http://localhost:3000","https://eshopify-online-store.onrender.com","https://eshopify-store.onrender.com"],
+  origin: ["http://localhost:3000","https://eshopify-online-store.onrender.com","https://eshopify-store.onrender.com","https://synthetixy.com"],
   credentials: true,
 }));
 
@@ -33,7 +33,7 @@ app.use(
       maxAge: 24 * 60 * 60 * 1000, 
       secure: true,
       sameSite: 'none',
-      domain: 'onrender.com'
+      domain: '.onrender.com'
     },
   })
 );
