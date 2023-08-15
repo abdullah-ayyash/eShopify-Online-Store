@@ -33,14 +33,14 @@ app.use(
     cookie: { 
       maxAge: 24 * 60 * 60 * 1000, 
       secure: true, 
-      sameSite: 'none',
+      sameSite: 'lax',
       httpOnly: true,
     },
   })
 );
 
 
-passport.initialize() // Added
+
 app.use(passport.session());
 app.use(passport.authenticate('session'));
 
