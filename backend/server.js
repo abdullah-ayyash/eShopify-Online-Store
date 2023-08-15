@@ -34,13 +34,13 @@ app.use(
       maxAge: 24 * 60 * 60 * 1000, 
       secure: true, 
       sameSite: 'none',
-      httpOnly:true,
+      httpOnly: true,
     },
   })
 );
 
 
-
+passport.initialize() // Added
 app.use(passport.session());
 app.use(passport.authenticate('session'));
 
