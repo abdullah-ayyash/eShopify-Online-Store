@@ -20,9 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-  origin: ["http://localhost:3000","https://shopnex.netlify.app"],
+  origin: ["http://localhost:3000","https://shopnex.netlify.app","https://eshopify-store.onrender.com/"],
   credentials: true,
-  exposedHeaders: ["set-cookie"]
 }));
 
 
@@ -33,7 +32,7 @@ app.use(
     saveUninitialized: false,
     cookie: { 
       maxAge: 24 * 60 * 60 * 1000, 
-      secure: true, 
+      secure: envType === 'PRODUCTION', 
       sameSite: 'none'
     },
   })
