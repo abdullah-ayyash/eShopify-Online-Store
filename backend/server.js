@@ -30,7 +30,12 @@ app.use(
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 24 * 60 * 60 * 1000, secure: envType === 'DEVELOPMENT' ? false : true, sameSite: 'none' },
+    cookie: { 
+      maxAge: 24 * 60 * 60 * 1000, 
+      secure: envType === 'DEVELOPMENT' ? false : true, 
+      sameSite: 'none',
+      domain: 'shopnex.netlify.app'
+    },
   })
 );
 
