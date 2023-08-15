@@ -21,7 +21,8 @@ app.use(cookieParser());
 
 app.use(cors({
   origin: ["http://localhost:3000","https://shopnex.netlify.app"],
-  credentials: true
+  credentials: true,
+  exposedHeaders: ["set-cookie"]
 }));
 
 
