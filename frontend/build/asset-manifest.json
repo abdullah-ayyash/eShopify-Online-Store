@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.efd5d8ca.css",
-    "main.js": "/static/js/main.52cecc2e.js",
+    "main.js": "/static/js/main.881317e1.js",
     "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
     "static/media/bands.jpg": "/static/media/bands.a04626a4217034dc4925.jpg",
     "static/media/watches.jpg": "/static/media/watches.376a526b30a2fcfc7f18.jpg",
@@ -24,11 +24,11 @@
     "static/media/profile-photo.png": "/static/media/profile-photo.fa9d2d6de0b7c32553d8.png",
     "index.html": "/index.html",
     "main.efd5d8ca.css.map": "/static/css/main.efd5d8ca.css.map",
-    "main.52cecc2e.js.map": "/static/js/main.52cecc2e.js.map",
+    "main.881317e1.js.map": "/static/js/main.881317e1.js.map",
     "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.efd5d8ca.css",
-    "static/js/main.52cecc2e.js"
+    "static/js/main.881317e1.js"
   ]
 }
