@@ -1,1 +1,1 @@
-export const API_ENDPOINT = "https://eshopify-online-store.onrender.com/auth";
+export const API_ENDPOINT = process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT' ? 'http://localhost:8000/auth' : 'https://eshopify-online-store.onrender.com/auth';

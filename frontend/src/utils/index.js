@@ -5,7 +5,9 @@ export const fetchSessionData = async () => {
     method: "GET",
     credentials: 'include'
   });
+  console.log(data)
   const userData = await data.json();
+  console.log(userData)
   return userData;
 }
 

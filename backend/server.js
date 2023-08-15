@@ -9,6 +9,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const { findUserById } = require('./database/database');
 const PORT = process.env.PORT || 8000;
+const envType = process.env.ENVIRONMENT;
 
 const helmet = require('helmet');
 app.use(helmet());
@@ -29,7 +30,7 @@ app.use(
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 24 * 60 * 60 * 1000, secure: true }, // Set "secure: true" if using HTTPS
+    cookie: { maxAge: 24 * 60 * 60 * 1000, secure: envType === 'DEVELOPMENT' ? false : true },
   })
 );
 
