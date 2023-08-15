@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.efd5d8ca.css",
+    "main.js": "/static/js/main.52cecc2e.js",
+    "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
+    "static/media/bands.jpg": "/static/media/bands.a04626a4217034dc4925.jpg",
+    "static/media/watches.jpg": "/static/media/watches.376a526b30a2fcfc7f18.jpg",
+    "static/media/1.webp": "/static/media/1.1d3abf57d0d08f350f99.webp",
+    "static/media/bracelets.jpg": "/static/media/bracelets.a73ea6fd7df72ce3ff1d.jpg",
+    "static/media/2.webp": "/static/media/2.4e5e42d1ddbf52c316bf.webp",
+    "static/media/3.webp": "/static/media/3.1620cd0f3ccc5ebe2c8e.webp",
+    "static/media/4.webp": "/static/media/4.48e042df1f1bc4cde189.webp",
+    "static/media/5.webp": "/static/media/5.401581b146f379b288a0.webp",
+    "static/media/10.webp": "/static/media/10.6cbb5dc9342c3dc2a8d6.webp",
+    "static/media/6.webp": "/static/media/6.53023565a3f0b3d55dc8.webp",
+    "static/media/8.webp": "/static/media/8.f72743067e7b9bee9f2d.webp",
+    "static/media/9.webp": "/static/media/9.6cbc55726d9f0c755a64.webp",
+    "static/media/7.webp": "/static/media/7.d7389bea15095fdfaabf.webp",
+    "static/media/15.webp": "/static/media/15.fb8e77c9c0c7b1eafa4c.webp",
+    "static/media/13.webp": "/static/media/13.9f4e4bca3ff2a5808f38.webp",
+    "static/media/11.webp": "/static/media/11.a793b11b8ba50fa202ba.webp",
+    "static/media/12.webp": "/static/media/12.230f317b025ba85d96af.webp",
+    "static/media/14.webp": "/static/media/14.61d9fcfcc6b4dedb5cf4.webp",
+    "static/media/profile-photo.png": "/static/media/profile-photo.fa9d2d6de0b7c32553d8.png",
+    "index.html": "/index.html",
+    "main.efd5d8ca.css.map": "/static/css/main.efd5d8ca.css.map",
+    "main.52cecc2e.js.map": "/static/js/main.52cecc2e.js.map",
+    "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.efd5d8ca.css",
+    "static/js/main.52cecc2e.js"
+  ]
+}
