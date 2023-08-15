@@ -34,8 +34,7 @@ app.use(
     cookie: { 
       maxAge: 24 * 60 * 60 * 1000, 
       secure: true, 
-      sameSite: 'none',
-      domain: 'shopnex.netlify.app'
+      sameSite: 'none'
     },
   })
 );
