@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-  origin: ["http://localhost:3000","https://shopnex.netlify.app","https://eshopify-store.onrender.com/"],
+  origin: ["http://localhost:3000","https://shopnex.netlify.app","https://eshopify-store.onrender.com"],
   credentials: true,
 }));
 
