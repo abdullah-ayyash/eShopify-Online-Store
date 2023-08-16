@@ -8,17 +8,17 @@ const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 dotenv.config();
 const { findUserById } = require('./database/database');
-// const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 
 // SSL Related
-const https = require('https');
-const fs = require('fs');
-const PORT = process.env.PORT || 443
-const httpsOptions = {
-  key: fs.readFileSync('localhost-key.pem'),
-  cert: fs.readFileSync('localhost.pem')
-};
-const server = https.createServer(httpsOptions, app);
+// const https = require('https');
+// const fs = require('fs');
+// const PORT = process.env.PORT || 443
+// const httpsOptions = {
+//   key: fs.readFileSync('localhost-key.pem'),
+//   cert: fs.readFileSync('localhost.pem')
+// };
+// const server = https.createServer(httpsOptions, app);
 
 // Store
 const store = new session.MemoryStore();
