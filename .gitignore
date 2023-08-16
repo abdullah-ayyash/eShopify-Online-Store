@@ -12,6 +12,13 @@
 /frontend/coverage
 
 # production
+/backend/localhost-key.pem
+/backend/localhost.pem
+/frontend/-p
+/frontend/.cert
+
+
+
 # /frontend/build
 
 # misc

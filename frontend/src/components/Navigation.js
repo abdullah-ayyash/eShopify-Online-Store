@@ -1,17 +1,17 @@
-import { NavLink } from 'react-router-dom'
-import logo from '../logo.png'
-import profileIcon from '../images/user.png'
+import { NavLink } from 'react-router-dom';
+import logo from '../logo.png';
+import profileIcon from '../images/user.png';
+import { API_ENDPOINT } from '../utils/endPoint';
 
 function Navigation({ setIsLoggedIn, isLoggedIn }) {
 
   const logoutHandler = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:8000/auth/logout', {
+    const response = await fetch(`${API_ENDPOINT}/logout`, {
       method: 'POST',
       credentials: 'include'
     });
     setIsLoggedIn(false);
-    // window.location.reload();
   }
 
   return (

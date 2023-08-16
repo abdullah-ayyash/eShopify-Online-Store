@@ -10,7 +10,7 @@ const { loginInputValidate,LoginInputmiddleware,registerInputValidate,registerIn
 
 
 router.get('/',(req,res) =>{
-  res.json('<h1>The server is running</h1>')
+  res.send('<h2>server is running on port 443...</h2>')
 })
 
 router.post('/login',loginInputValidate,LoginInputmiddleware, (req, res, next) => {
@@ -44,7 +44,9 @@ router.get('/profile', isLoggedIn);
 
 router.post('/logout', function(req, res, next) {
   req.logout(function(err) {
-    if (err) { return next(err); }
+    if (err) { 
+      return next(err); 
+    }
     res.status(200).send();
   });
 });
