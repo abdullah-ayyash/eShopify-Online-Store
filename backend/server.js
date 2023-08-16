@@ -23,8 +23,8 @@ const PORT = process.env.PORT || 8000;
 // Store
 const store = new session.MemoryStore();
 
-const helmet = require('helmet');
-app.use(helmet());
+// const helmet = require('helmet');
+// app.use(helmet());
 
 // Middlewares
 app.use(express.json());
