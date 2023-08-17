@@ -11,7 +11,7 @@ const { findUserById } = require('./database/database');
 const PORT = process.env.PORT || 8000;
 
 
-// SSL Related
+// Development Related
 // const https = require('https');
 // const fs = require('fs');
 // const PORT = process.env.PORT || 443
@@ -86,7 +86,7 @@ app.listen(PORT, () => {
   console.log("Server is running on port " + PORT);
 });
 
-
+// Development Related
 // server.listen(PORT, () => {
 //   console.log(`Server running on https://localhost:${PORT}`);
 // });

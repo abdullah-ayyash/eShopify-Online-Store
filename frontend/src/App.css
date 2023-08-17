@@ -32,9 +32,169 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
+/* Responsive Design Styling */
 
+@media only screen and (max-width: 1600px) {
+  #product-card{
+    width: 30%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #user-container {
+    column-gap: 0rem;
+  }
+  #product-card{
+    width: 30%;
+  }
+
+}
+
+@media only screen and (max-width: 1024px) {
+  #user-container {
+    padding: 0;
+  }
+  #product-card{
+    width: 30%;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  .css-1mgcds5-MuiButtonBase-root-MuiTab-root {
+    font-size: 14px !important;
+  }
+
+  #profile-info-section h1 {
+    font-size: 1.7rem;
+  }
+  #product-card{
+    width: 46%;
+  }
+
+}
+
+@media only screen and (max-width: 650px) {
+  #logo li a img {
+    height: 65px;
+  }
+
+  #profile-info-section h1 {
+    font-size: 1.5rem;
+  }
+
+  .cart-item {
+    flex-direction: column;
+  }
+
+  .item-image img {
+    max-width: 70%;
+    height: auto;
+  }
+
+  .item-actions {
+    flex: 0 0 10px;
+    text-align: center;
+  }
+
+  .order-container {
+    flex-direction: column;
+  }
+
+  .order-info-container>p {
+    font-size: 1.1rem;
+  }
+  .order-info-container > h2{
+    font-size: 1.4rem;
+  }
+  #addresses-container h1{
+    font-size: 1.5rem;
+  }
+  .cart-container h1{
+    font-size: 1.5rem;
+  }
+  #orders-page h1{
+    font-size: 1.5rem;
+  }
+  #product-card{
+    width: 100%;
+  }
+  #menu-list{
+    font-size: 1rem;
+  }
+
+
+}
+
+@media only screen and (max-width: 500px) {
+  header ul {
+    padding: 0 5px;
+  }
+
+  .fa-cart-arrow-down {
+    padding: 4px 8px 4px 4px;
+    font-size: 23px;
+  }
+
+  #user-control li a button {
+    padding: 3px 8px;
+    font-size: 0.8rem;
+  }
+
+  #user-control li img {
+    height: 32px;
+  }
+
+  #tabs-container {
+    width: 25%;
+  }
+
+  #profile-content {
+    width: 75%;
+  }
+
+  #profile-info p {
+    font-size: 1.1rem;
+  }
+
+  .css-19kzrtu {
+    padding: 10px;
+  }
+
+  .cart-item {
+    flex-direction: column;
+  }
+
+  .item-image img {
+    max-width: 70%;
+    height: auto;
+  }
+
+  .item-actions {
+    flex: 0 0 10px;
+    text-align: center;
+  }
+
+  .order-container {
+    flex-direction: column;
+  }
+
+  .order-info-container>p {
+    font-size: 1.1rem;
+  }
+  #product-card{
+    width: 100%;
+  }
+  #menu-list{
+    font-size: 1rem;
+  }
+
+}
+
+@media only screen and (max-width: 480px) {}
