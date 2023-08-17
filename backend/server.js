@@ -21,10 +21,10 @@ const PORT = process.env.PORT || 8000;
 // const server = https.createServer(httpsOptions, app);
 
 // Store
-const store = new session.MemoryStore();
+// const store = new session.MemoryStore();
 
-// const helmet = require('helmet');
-// app.use(helmet());
+const helmet = require('helmet');
+app.use(helmet());
 
 // Middlewares
 app.use(express.json());
@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-  origin: ["https://localhost:3000", "https://eshopify-online-store.onrender.com", "https://eshopify-store.onrender.com", "https://synthetixy.com"],
+  origin: ["https://localhost:3000", "https://eshopify-online-store.onrender.com", "https://eshopify-store.onrender.com", "https://synthetixy.com","https://myapp.local:3000"],
   credentials: true,
 }));
 
@@ -42,19 +42,19 @@ app.use(
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
-    store,
-    cookie: {
-      maxAge: 24 * 60 * 60 * 1000,
-      secure: true,
-      sameSite: 'none', 
-      httpOnly: true
-    }
+    // store,
+    // cookie: {
+    //   maxAge: 24 * 60 * 60 * 1000,
+    //   secure: true,
+    //   sameSite: 'none', 
+    //   httpOnly: true
+    // }
   })
 );
 
 
 
-app.use(passport.session());
+// app.use(passport.session());
 app.use(passport.authenticate('session'));
 
 
