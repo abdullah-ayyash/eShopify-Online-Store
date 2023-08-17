@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 8000;
 // const server = https.createServer(httpsOptions, app);
 
 // Store
-// const store = new session.MemoryStore();
+const store = new session.MemoryStore();
 
 const helmet = require('helmet');
 app.use(helmet());
