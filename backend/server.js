@@ -10,6 +10,7 @@ dotenv.config();
 const { findUserById } = require('./database/database');
 const PORT = process.env.PORT || 8000;
 
+
 // SSL Related
 // const https = require('https');
 // const fs = require('fs');
@@ -52,7 +53,9 @@ app.use(
   })
 );
 
-
+if (process.env.ENVIRONMENT === 'PRODUCTION') {
+  app.set('trust proxy', 1);
+}
 
 // app.use(passport.session());
 app.use(passport.authenticate('session'));
