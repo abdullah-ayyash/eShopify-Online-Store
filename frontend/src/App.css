@@ -192,7 +192,11 @@
     width: 100%;
   }
   #menu-list{
-    font-size: 1rem;
+    font-size: 0.8rem;
+    column-gap: 0.3rem;
+  }
+  #logo li a img {
+    height: 55px;
   }
 
 }
