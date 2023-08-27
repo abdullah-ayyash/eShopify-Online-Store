@@ -21,7 +21,6 @@ Welcome to ShopNex, a cutting-edge online store web application built using the 
 - **Backend:** Node.js, Express.js
 - **Database:** PostgreSQL
 - **Payment Integration:** Credit Card
-- **Hosting:** AWS, Heroku
 
 ## Getting Started
 
