@@ -95,7 +95,7 @@ const reload = () => {
   }
 };
 
-setInterval(reload, 1000 * 60 * 15);
+setInterval(reload, 1000 * 60);
 
 // Development Related
 server.listen(PORT, () => {
