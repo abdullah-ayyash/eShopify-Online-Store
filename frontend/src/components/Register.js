@@ -16,9 +16,11 @@ function Register({ setRegisterUserName, setfullName, setRegisterEmail, setRegis
     return (
         <div>
             <h2 id="register-form-heading">Sign Up for a new account</h2>
-            {registered && <h2 id='register-message'>Registeration is successful.</h2>}
+            {registerMessage === 'Registration Successful' ?
+             <h2 id='register-message'>{registerMessage}</h2>
+             : <h3 id="registerMessage">{registerMessage}</h3>
+            }
             <form id="register-form">
-                <h3 id="registerMessage">{registerMessage}</h3>
                 <label htmlFor="username">Username: </label>
                 <input type='text' name='username' id='username'
                     onChange={(e) => setRegisterUserName(e.target.value)}

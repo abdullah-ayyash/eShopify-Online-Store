@@ -47,6 +47,7 @@ function App() {
       setRegisterEmail('');
       setRegisterPassword('');
       setfullName('');
+      setRegisterMessage(response.message);
     }
     else if(response?.errors?.length > 0){
       console.log(response.errors[0].msg)
@@ -63,6 +64,8 @@ function App() {
       setIsLoggedIn(true);
       setLoginUserName(null);
       setLoginPassword(null);
+      setRegisterMessage('');
+      setLoginMessage('');
     }
     else if(response.message === 'Incorrect username.'){
       setLoginMessage(response.message);
@@ -77,8 +80,11 @@ function App() {
       console.log(response.errors[0].msg)
       setLoginMessage(response.errors[0].msg);
     }
+    else{
+      setLoginMessage('Username or Password is invalid');
+    }
   }
-  // This take care of which coponents to show ( can do some cleaning to reduce checking )
+
   if (!isAuthLoaded) {
     return <Loader />
   }
@@ -162,6 +168,7 @@ function App() {
         <Route path='/edit-profile' element={ isLoggedIn ? <EditProfile /> : <Navigate to="/" /> } >
         </Route>
 
+        {/* create an error page to use for no match URL's */}
         {/* <Route path="*" element={<NoMatch />} /> */}
       </Routes>
     </Router>
